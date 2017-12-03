@@ -1,20 +1,28 @@
 var triangles = [];
 var totalTriangles = 250;
+for(var i=0;i<totalTriangles;i++)
+{
+    triangles[i] = Math.floor(Math.random() * 284);
+}
+
 var section = [
     [272, 273, 274, 275, 257, 258, 259, 260, 261, 262, 263],
     [8, 7, 1, 12, 13 ,14 ,15, 17, 18,19 ,20]
 ];
 var sectionWidth = section[0].length;
 var sectionHeight = section.length;
-var flag = 0;
-for(var i=0;i<totalTriangles;i++)
-{
-    triangles[i] = Math.floor(Math.random() * 284);
-}
+
+var flag = false;
+var noScroll = false;
+
+var anchors = ["graphics", "branding", "aboutme", "webdevelopment", "oop" ];
+var active = 2;
+
+
 
 function slide(){
     document.getElementById("portrait").style="margin-left:0px";
-    document.getElementById("headline").style="margin-left:-16vw";
+    document.getElementById("headline").style="margin-left:0vw";
     document.getElementById("subheadline").style="margin-left:16vw";
 }
 
@@ -27,7 +35,6 @@ function initialDisplay(){
         }
         
     }
-
     triangleChange();
 }
 
@@ -44,13 +51,12 @@ function triangleChange(){
     else
     {
         setTimeout(glitch,1000,0);
-    }
-    
+    } 
 }
 
 function glitch(index){
 
-    if(index<sectionWidth && flag == 0)
+    if(index<sectionWidth && flag == false)
     {
         for(var i = 0; i < sectionHeight ; i++)
         {
@@ -60,9 +66,9 @@ function glitch(index){
     }
     else
     {
-        flag = 1;
+        flag = true;
     }    
-    if(flag == 1){
+    if(flag == true){
 
         for(var i = 0; i < sectionHeight ; i++)
         {
@@ -100,4 +106,43 @@ function glitch(index){
         setTimeout(glitch,25,index);
     }
 }
+
+function activate(index){
+   active = index;
+    for(var i=0;i<index;i++)
+    {
+        document.getElementById(anchors[i]).style = "margin-left:-100vw";
+    }
+    document.getElementById(anchors[index]).style = "margin-left:0px";
+    for(var i=index+1;i<anchors.length;i++)
+    {
+        document.getElementById(anchors[i]).style = "margin-left:100vw";
+    } 
+}
+
+
+$(document).on('mousewheel', function(e) {
+    var delta = e.originalEvent.wheelDelta;
+    if(noScroll)
+    {
+        return true;
+    }
+    if(delta<0)
+    {
+       if(active!=0)
+       {
+            activate(active-1);
+            noScroll = true;
+       }
+    }
+    else
+    {
+        if(active!=anchors.length-1)
+        {
+            activate(active+1);
+            noScroll = true;
+        }
+    }
+    setTimeout(function(){noScroll = false;}, 1500);
+});
 
