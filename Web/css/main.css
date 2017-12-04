@@ -1,5 +1,5 @@
 body{
-     background: url("../assets/bg.svg") no-repeat center center fixed; 
+     background: url("../assets/bg.svg") center; 
      -webkit-background-size: cover;
      -moz-background-size: cover;
      -o-background-size: cover;
