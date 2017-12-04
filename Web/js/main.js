@@ -21,7 +21,6 @@ var active = 2;
 function slide(){
     document.getElementById("portrait").style="margin-left:0px";
     document.getElementById("headline").style="margin-left:0vw";
-    document.getElementById("subheadline").style="margin-left:16vw";
 }
 
 function initialDisplay(){
@@ -48,7 +47,7 @@ function triangleChange(){
     }
     else
     {
-        setTimeout(glitch,1000,0);
+        setTimeout(glitch,100,0);
     } 
 }
 
@@ -120,7 +119,7 @@ function activate(clicked,i = active){
 
         if(anchors[i] == "aboutme" )
         {
-            document.getElementById("logo").style="fill:#cccccc";
+            document.getElementById("logo").style="fill:#eeeeee";
         }
         if(anchors[i+1] == "aboutme" )
         {
@@ -128,7 +127,7 @@ function activate(clicked,i = active){
         }
 
         document.getElementById("link"+(i+1)).style="color:#00ff00";
-        document.getElementById("link"+i).style="color:#cccccc";
+        document.getElementById("link"+i).style="color:#eeeeee";
 
         setTimeout(function(){
             activate(clicked,i + 1);
@@ -141,7 +140,7 @@ function activate(clicked,i = active){
 
         if(anchors[i] == "aboutme" )
         {
-            document.getElementById("logo").style="fill:#cccccc";
+            document.getElementById("logo").style="fill:#eeeeee";
         }
         if(anchors[i-1] == "aboutme" )
         {
@@ -149,7 +148,7 @@ function activate(clicked,i = active){
         }
 
         document.getElementById("link"+(i-1)).style="color:#00ff00";
-        document.getElementById("link"+i).style="color:#cccccc";
+        document.getElementById("link"+i).style="color:#eeeeee";
 
         setTimeout(function(){
             activate(clicked,i - 1);
@@ -166,7 +165,6 @@ function slideSection(index,direction){
 
 
 $(document).on('mousewheel', function(e) {
-    console.log(noScroll);
     var delta = e.originalEvent.wheelDelta;
     if(noScroll)
     {
@@ -176,6 +174,16 @@ $(document).on('mousewheel', function(e) {
     {
        if(active!=0)
        {
+            if(anchors[active] == "aboutme" )
+            {
+                document.getElementById("logo").style="fill:#eeeeee";
+            }
+            if(anchors[active-1] == "aboutme" )
+            {
+                document.getElementById("logo").style="fill:#00ff00";
+            }
+            document.getElementById("link"+(active-1)).style="color:#00ff00";
+            document.getElementById("link"+active).style="color:#eeeeee";
 
             slideSection(active-1,0);
             slideSection(active,1);
@@ -187,6 +195,17 @@ $(document).on('mousewheel', function(e) {
     {
         if(active!=anchors.length-1)
         {
+            if(anchors[active] == "aboutme" )
+            {
+                document.getElementById("logo").style="fill:#eeeeee";
+            }
+            if(anchors[active+1] == "aboutme" )
+            {
+                document.getElementById("logo").style="fill:#00ff00";
+            }
+            document.getElementById("link"+(active+1)).style="color:#00ff00";
+            document.getElementById("link"+active).style="color:#eeeeee";
+
             slideSection(active+1,0);
             slideSection(active,-1);
             active+=1;
