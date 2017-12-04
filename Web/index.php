@@ -10,19 +10,24 @@
     <nav class="navbar navbar-light navbar-transparent fixed-bottom">
             <div class="navbar-nav">
                 
-                <a class="nav-item nav-link" onclick="activate(0)">3D Graphics</a>
-                <a class="nav-item nav-link" onclick="activate(1)">Branding</a>
-                <a class="nav-item nav-link" onclick="activate(2)">About me</a>
-                <a class="nav-item nav-link" onclick="activate(3)">Web development</a>
-                <a class="nav-item nav-link" onclick="activate(4)">OOP</a>
+                <a class="nav-item nav-link" id="link0" onclick="activate(0)">3D Graphics</a>
+                <a class="nav-item nav-link" id="link1" onclick="activate(1)">Branding</a>
+                <a class="nav-item nav-link" id="link2" onclick="activate(2)">
+                    <div class="logoAboutMe" id="logo">
+                        <?php echo file_get_contents("assets/logo.svg"); ?>
+                    </div> 
+                </a>
+                <a class="nav-item nav-link" id="link3" onclick="activate(3)">Web development</a>
+                <a class="nav-item nav-link" id="link4" onclick="activate(4)">OOP</a>
             </div>
     </nav>
+
         <div id="graphics">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xl-12">
-                        <div style="color:#ffffff;font-size:150px;">
-                            GRAPHICS
+                        <div class="test">
+                            ceva
                         </div>
                     </div>
                 </div>

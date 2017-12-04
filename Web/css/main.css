@@ -6,6 +6,9 @@ body{
      background-size: cover;
     overflow: hidden;
 }
+a:hover {
+    cursor:pointer;
+}
 .portrait{
     position: absolute;
     margin-top: 6vw;
@@ -47,6 +50,12 @@ body{
     transition: all 1s;
     transition-timing-function: ease-in-out;
 }
+.logoAboutMe{
+    width:30px;
+    height: auto;
+    fill:#00ff00;
+    padding-top: 5px;
+}
 .navbar-transparent{
     background-color: transparent !important;
 }
@@ -60,23 +69,29 @@ body{
     margin-bottom: 10px !important;
     display: inline-block !important;
 } 
-.nav-link{
-    color: #cccccc !important;
+.navbar-light .navbar-nav .nav-link{
+    color: #cccccc ;
     font-family: 'Open Sans',sans-serif !important;
 }
 .nav-link:hover{
     color: #00ff00 !important;
+    fill: #00ff00 !important;
     border-top: 2px solid #00ff00;
 }
+
+
+#logo:hover{
+    fill:#00ff00 !important;
+}
 #graphics{
-    margin-left: -200vw;
+    margin-left: -100vw;
     position: absolute;
     width: 100%;
     height: 100%;
     transition: all 1.5s;
 }
 #branding{
-    margin-left: -200vw;
+    margin-left: -100vw;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -88,14 +103,14 @@ body{
     transition: all 1.5s;
 }
 #webdevelopment{
-    margin-left: 200vw;
+    margin-left: 100vw;
     position: absolute;
     width: 100%;
     height: 100%;
     transition: all 1.5s;
 }
 #oop{
-    margin-left: 200vw;
+    margin-left: 100vw;
     position: absolute;
     width: 100%;
     height: 100%;

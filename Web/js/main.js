@@ -18,8 +18,6 @@ var noScroll = false;
 var anchors = ["graphics", "branding", "aboutme", "webdevelopment", "oop" ];
 var active = 2;
 
-
-
 function slide(){
     document.getElementById("portrait").style="margin-left:0px";
     document.getElementById("headline").style="margin-left:0vw";
@@ -107,31 +105,81 @@ function glitch(index){
     }
 }
 
-function activate(index){
-   active = index;
-    for(var i=0;i<index;i++)
+
+function activate(clicked,i = active){
+
+    if(i==clicked)
     {
-        document.getElementById(anchors[i]).style = "margin-left:-100vw";
+        active = clicked;
+        return;
     }
-    document.getElementById(anchors[index]).style = "margin-left:0px";
-    for(var i=index+1;i<anchors.length;i++)
+    else if(i<clicked)
     {
-        document.getElementById(anchors[i]).style = "margin-left:100vw";
+        slideSection(i,-1);
+        slideSection(i+1,0);
+
+        if(anchors[i] == "aboutme" )
+        {
+            document.getElementById("logo").style="fill:#cccccc";
+        }
+        if(anchors[i+1] == "aboutme" )
+        {
+            document.getElementById("logo").style="fill:#00ff00";
+        }
+
+        document.getElementById("link"+(i+1)).style="color:#00ff00";
+        document.getElementById("link"+i).style="color:#cccccc";
+
+        setTimeout(function(){
+            activate(clicked,i + 1);
+        },1000);
+    }
+    else if(i>clicked)
+    {
+        slideSection(i,1);
+        slideSection(i-1,0);
+
+        if(anchors[i] == "aboutme" )
+        {
+            document.getElementById("logo").style="fill:#cccccc";
+        }
+        if(anchors[i-1] == "aboutme" )
+        {
+            document.getElementById("logo").style="fill:#00ff00";
+        }
+
+        document.getElementById("link"+(i-1)).style="color:#00ff00";
+        document.getElementById("link"+i).style="color:#cccccc";
+
+        setTimeout(function(){
+            activate(clicked,i - 1);
+        },1000);
     } 
+
+}
+
+
+function slideSection(index,direction){
+    dist = direction*100;
+    document.getElementById(anchors[index]).style = "margin-left:"+dist+"vw";
 }
 
 
 $(document).on('mousewheel', function(e) {
+    console.log(noScroll);
     var delta = e.originalEvent.wheelDelta;
     if(noScroll)
     {
         return true;
     }
-    if(delta<0)
+    if(delta>0)
     {
        if(active!=0)
        {
-            activate(active-1);
+
+            slideSection(active-1,0);
+            slideSection(active,1);
+            active-=1;
             noScroll = true;
        }
     }
@@ -139,7 +187,9 @@ $(document).on('mousewheel', function(e) {
     {
         if(active!=anchors.length-1)
         {
-            activate(active+1);
+            slideSection(active+1,0);
+            slideSection(active,-1);
+            active+=1;
             noScroll = true;
         }
     }
