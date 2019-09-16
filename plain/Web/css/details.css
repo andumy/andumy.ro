@@ -1,0 +1,260 @@
+html, body {
+    margin: 0;
+    height: 100vh; 
+    width: 100vw;
+    overflow-x: hidden;
+}
+body{
+     background: url("../assets/bg.svg") center fixed; 
+     -webkit-background-size: cover;
+     -moz-background-size: cover;
+     -o-background-size: cover;
+     background-size: cover;
+}
+a:hover {
+    cursor:pointer;
+    text-decoration: none;
+}
+.wrapper{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+.bgParallax{
+    width:50vw;
+    margin-left: 2vw;
+    padding-top:2vw;
+}
+.bgParallaxImage{
+    width:35vw;
+    margin-left: 2vw;
+    padding-top:2vw;
+}
+.parallaxTitle{
+    text-shadow: 0px 0px 50px #000000;
+    font-size: 5vw;
+    line-height: 6vw;
+    letter-spacing: 30px;
+    color: #eeeeee;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    margin-top: 320px;
+    margin-left: 25vw;
+}
+.parallaxSubTitle{
+    margin-left: 25vw;
+    position: relative;
+    font-size: 16px;
+    line-height: 30px;
+    letter-spacing: 5px;
+    color: #666666;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+}
+.test{
+    background-color: #00ff00;
+    width:100%;
+    height:50px;
+}
+.description{
+    margin-top: 50px;
+    margin-bottom: 100px;
+    color:#999999;
+    font-size: 16px;
+    font-family: 'Open-Sans', sans-serif;
+    letter-spacing: 3px;
+    line-height: 30px;
+}
+.imageSquare{
+    width:100%;
+    height:auto;
+    margin:15px 0px;
+    -webkit-box-shadow: 0px 0px 49px -6px rgba(0,0,0,0.7);
+    -moz-box-shadow: 0px 0px 49px -6px rgba(0,0,0,0.7);
+    box-shadow: 0px 0px 49px -6px rgba(0,0,0,0.7);
+}
+.up{
+    -webkit-transition: color .5s;
+    -moz-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+    position: absolute;
+    z-index:30;
+    right:5vw;
+    bottom:30px;
+    width:50px;
+    height:50px;
+    text-align: center;
+    line-height: 50px;
+    background-color: #111111;
+    color:#00ff00;
+    border-radius: 10px;
+}
+.back{
+    -webkit-transition: color .5s;
+    -moz-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+    position: absolute;
+    z-index:30;
+    left:5vw;
+    bottom:30px;
+    width:50px;
+    height:50px;
+    text-align: center;
+    line-height: 50px;
+    background-color: #111111;
+    color:#00ff00;
+    border-radius: 10px;
+}
+.up:hover, .back:hover{
+    color: #111111;
+    background-color:#00ff00;
+}
+.info{
+    font-family: "Open-sans",sans-serif;
+    padding: 20px;
+    background-color: rgba(0,0,0,0.8);
+    position: absolute;
+    z-index:2;
+    margin:15px 0px;
+    color:#ffffff;
+}
+.hid{
+    display: none;
+}
+.brandLogo{
+    display:inline-block;
+    padding:5px;
+    width:50px;
+    height: auto;
+}
+.grayTriangle{
+    fill: #333333 !important;
+    stroke: #00ff00 !important;
+
+}
+.portrait{
+    margin-top: 10vh;
+    width:35vw;
+}
+.contact{
+    margin-bottom: 50px;
+    text-align: center;
+    width:30%;
+    color:#ffffff;
+    text-decoration: none;
+}
+.contact:hover{
+    color:#00ff00;
+}
+.scores{
+    margin: 10px 0px;
+}
+.imgShadow{
+    -webkit-box-shadow: 0px 0px 49px -6px rgba(0,0,0,0.7);
+    -moz-box-shadow: 0px 0px 49px -6px rgba(0,0,0,0.7);
+    box-shadow: 0px 0px 49px -6px rgba(0,0,0,0.7);
+}
+.filler{
+    width:100vw;
+    height: 75px;
+}
+#up{
+    -webkit-transition: color .5s;
+    -moz-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+}
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #444444;
+    border: 5px solid #333333;
+    border-radius: 10px;
+    }
+    
+::-webkit-scrollbar-thumb {
+    
+    background: -moz-linear-gradient(45deg, #00ff00 0%, #006d00 100%); 
+    background: -webkit-linear-gradient(45deg, #00ff00 0%,#006d00 100%); 
+    background: linear-gradient(45deg, #00ff00 0%,#006d00 100%); 
+    border-radius: 10px;
+    }
+    
+::-webkit-scrollbar-thumb:hover {
+    background: -moz-linear-gradient(45deg, #00ff00 0%, #006d00 100%); 
+    background: -webkit-linear-gradient(45deg, #00ff00 0%,#006d00 100%); 
+    background: linear-gradient(45deg, #00ff00 0%,#006d00 100%); 
+    }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #BBBBBB !important;
+}
+
+    @media all and (max-width: 1199px){ 
+        /* col-lg */
+        
+        .wrapper{
+            height:55vh;
+        }
+    }
+    @media all and (max-width: 991px){ 
+        /* col-md */
+        
+        .wrapper{
+            height:55vh;
+        }
+    }
+    @media all and (max-width: 767px){ 
+        /* col-sm */
+     
+        .wrapper{
+            height:60vh;
+        }
+    }
+    @media all and (max-width: 575px){ 
+        /* col- */
+       
+        .portrait{
+            margin-top: 0vh;
+            padding-top: 0vh;
+        }
+        .parallaxTitle{
+            font-size: 8vw;
+            line-height: 12vw;
+            letter-spacing: 8px;
+            color: #eeeeee;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+            margin-top: 70vw;
+            margin-left: 8vw;
+        }
+        .parallaxSubTitle{
+            padding:5px;
+            margin-left: 5vw;
+            position: relative;
+            font-size: 14px;
+            line-height: 30px;
+            letter-spacing: 2px;
+            color: #666666;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+        }
+        .bgParallaxImage{
+            width:65vw;
+        }
+        .bgParallax{
+            width:85vw;
+        }
+        .wrapper{
+            height:90vh;
+        }
+    }
+    
