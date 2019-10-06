@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Andrei Dumitrescu',
             'email' => 'andrei_dumitrescu_96@yahoo.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('Shotokan!996'),
+            'password' => Hash::make('test'),
             'created_at' => now(),
             'updated_at' => now()
         ]);

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
+use Carbon\Carbon;
 
 class CategoryController extends Controller
 {
@@ -13,8 +15,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        $categories = Category::all();
+        return view('categories.index')->with(['categories' => $categories]);
     }
 
     /**
@@ -33,10 +36,24 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        $data = $request->all();
-        
+        $data = (object) $request->all();
+        if($image = $request->file('image')){
+            $path = storage_path('app/public/categories');
+            $name = strtotime(Carbon::now()).$image->getClientOriginalName();
+            $image->move($path,$name);
+            $data->image = $name;
+        }
+
+        $category = new Category();
+        $category->image = $data->image;
+        $category->name = $data->name;
+        $category->cta = $data->cta;
+        $category->order = $data->order;
+        $category->save();
+
+        return redirect()->route('home');
     }
 
     /**
