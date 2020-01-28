@@ -45,12 +45,12 @@
           </td>
           <td>
             {!! Form::open(['method' => 'GET', 'action' => ['ElementController@edit', $element->id]])!!}
-              {!! Form::submit('Edit',['class' => 'btn btn-primary mt-4']) !!}
+              {!! Form::button('<i class="fa fa-edit"></i>',['type' => 'submit','class' => 'btn btn-success mt-4']) !!}
             {!! Form::close() !!}
           </td>
           <td>
               {!! Form::open(['method' => 'DELETE', 'action' => ['ElementController@destroy', $element->id]])!!}
-              {!! Form::submit('Delete',['class' => 'btn btn-danger mt-4']) !!}
+              {!! Form::button('<i class="fa fa-trash"></i>',['type' => 'submit','class' => 'btn btn-danger mt-4']) !!}
             {!! Form::close() !!}
           </td>
         </tr>

@@ -7,6 +7,7 @@ use App\Element;
 use App\Http\Requests\ElementRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ElementController extends Controller
 {
@@ -44,7 +45,6 @@ class ElementController extends Controller
      */
     public function store(ElementRequest $request)
     {
-
         $data = (object) $request->except(['_token','_method']);
         if($image = $request->file('image')){
             $path = storage_path('app/public/elements');
@@ -73,24 +73,43 @@ class ElementController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Element  $element
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Element $element)
+    public function edit($id)
     {
-        //
+        $element = Element::findOrFail($id);
+        $category_list = Category::all()->pluck('name','id');
+        return view('elements.edit')->with([
+            'element' => $element,
+            'action' => 'edit',
+            'category_list' => $category_list
+            ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Element  $element
+     * @param  ElementRequest  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Element $element)
+    public function update(ElementRequest $request, $id)
     {
-        //
+        $data = (object) $request->except(['_token','_method']);
+        $element = Element::findOrFail($id);
+        
+
+        if($image = $request->file('image')){
+            Storage::delete('/public/elements/'.$element->image);
+            $path = storage_path('app/public/elements');
+            $name = strtotime(Carbon::now()).$image->getClientOriginalName();
+            $image->move($path,$name);
+            $data->image = $name;
+        }
+        
+        $element->update((array)$data);
+        return redirect()->route('element.index');
     }
 
     /**

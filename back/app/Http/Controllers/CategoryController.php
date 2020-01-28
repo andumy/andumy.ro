@@ -79,7 +79,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(int $id)
+    public function edit($id)
     {
         $category = Category::findOrFail($id);
         return view('categories.edit')->with([
@@ -91,17 +91,18 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request $request
+     * @param  CategoryRequest $request
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         $data = (object) $request->except(['_token','_method']);
         $category = Category::findOrFail($id);
-        Storage::delete('/public/categories/'.$category->image);
+        
 
         if($image = $request->file('image')){
+            Storage::delete('/public/categories/'.$category->image);
             $path = storage_path('app/public/categories');
             $name = strtotime(Carbon::now()).$image->getClientOriginalName();
             $image->move($path,$name);

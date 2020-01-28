@@ -25,7 +25,7 @@
           @if ($action === 'create')
             {{ Form::select('category_id',$category_list,null,['class' => 'form-control' , 'placeholder' => trans('Enter Category ...')]) }}
           @else
-            {{ Form::select('category_id',$category_list,$element->category->name,['class' => 'form-control' , 'placeholder' => trans('Enter Category ...')]) }}
+            {{ Form::select('category_id',$category_list,$element->category->id,['class' => 'form-control' , 'placeholder' => trans('Enter Category ...')]) }}
           @endif
           
       </div>

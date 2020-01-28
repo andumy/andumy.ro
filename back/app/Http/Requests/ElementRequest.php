@@ -24,7 +24,6 @@ class ElementRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => ['required'],
             'link' => ['required'],
             'description' => ['required'],
             'ratio' => ['required', 'numeric'],
