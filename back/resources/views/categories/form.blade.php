@@ -32,6 +32,16 @@
   </div>
   <div class="row">
     <div class="col-6 offset-3">
+        {{ Form::label('headline') }}
+        @if ($action === 'create')
+          {!! Form::text('headline', null, ['class' => 'form-control', 'placeholder' => trans('Enter Name ...')]) !!}   
+        @else
+          {!! Form::text('headline', $category->headline, ['class' => 'form-control', 'placeholder' => trans('Enter Name ...')]) !!}   
+        @endif
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 offset-3">
       {{ Form::label('Description') }}
       @if ($action === 'create')
         {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => trans('Enter Description ...')]) !!}

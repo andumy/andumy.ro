@@ -19,6 +19,8 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('cta');
             $table->integer('order');
+            $table->string('description',10000)->nullable();
+            $table->string('headline');
             $table->timestamps();
         });
     }
