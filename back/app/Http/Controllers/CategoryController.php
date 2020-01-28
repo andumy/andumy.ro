@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Element;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Input;
 
 class CategoryController extends Controller
 {
@@ -16,8 +19,11 @@ class CategoryController extends Controller
      */
     public function index()
     {   
-        $categories = Category::all();
-        return view('categories.index')->with(['categories' => $categories]);
+        $categories = Category::orderBy('order')->get();
+        return view('categories.create')->with([
+            'categories' => $categories,
+            'action' => 'create'
+            ]);
     }
 
     /**
@@ -33,12 +39,12 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  CategoryRequest  $request
+     * @return Response
      */
     public function store(CategoryRequest $request)
     {
-        $data = (object) $request->all();
+        $data = (object) $request->except(['_token','_method']);
         if($image = $request->file('image')){
             $path = storage_path('app/public/categories');
             $name = strtotime(Carbon::now()).$image->getClientOriginalName();
@@ -46,14 +52,9 @@ class CategoryController extends Controller
             $data->image = $name;
         }
 
-        $category = new Category();
-        $category->image = $data->image;
-        $category->name = $data->name;
-        $category->cta = $data->cta;
-        $category->order = $data->order;
+        $category = new Category((array)$data);
         $category->save();
-
-        return redirect()->route('home');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -64,30 +65,51 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $elements = Element::where('category_id',$category->id)->get();
+
+        return view('categories.show')->with([
+            'elements' => $elements,
+            'category' => $category
+            ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(int $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('categories.edit')->with([
+            'category' => $category,
+            'action' => 'edit'
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $data = (object) $request->except(['_token','_method']);
+        $category = Category::findOrFail($id);
+        Storage::delete('/public/categories/'.$category->image);
+
+        if($image = $request->file('image')){
+            $path = storage_path('app/public/categories');
+            $name = strtotime(Carbon::now()).$image->getClientOriginalName();
+            $image->move($path,$name);
+            $data->image = $name;
+        }
+        
+        $category->update((array)$data);
+        return redirect()->route('category.index');
     }
 
     /**
@@ -98,6 +120,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        Storage::delete('/public/categories/'.$category->image);       
+        $category->delete();
+        return redirect()->route('category.index');
     }
 }

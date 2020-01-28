@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Element;
+use App\Http\Requests\ElementRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ElementController extends Controller
@@ -14,7 +17,13 @@ class ElementController extends Controller
      */
     public function index()
     {
-        //
+        $elements = Element::orderBy('category_id')->get();
+        $category_list = Category::all()->pluck('name','id');
+        return view('elements.create')->with([
+            'elements' => $elements,
+            'action' => 'create',
+            'category_list' => $category_list
+            ]);
     }
 
     /**
@@ -30,12 +39,24 @@ class ElementController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  ElementRequest  $request
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(ElementRequest $request)
     {
-        //
+
+        $data = (object) $request->except(['_token','_method']);
+        if($image = $request->file('image')){
+            $path = storage_path('app/public/elements');
+            $name = strtotime(Carbon::now()).$image->getClientOriginalName();
+            $image->move($path,$name);
+            $data->image = $name;
+        }
+
+        $element = new Element((array)$data);
+        $element->save();
+
+        return redirect()->route('element.index');
     }
 
     /**

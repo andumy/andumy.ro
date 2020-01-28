@@ -9,33 +9,7 @@
           <div class="card shadow">
             <div class="card-body">
               <h3>{{ __('Categories') }}</h3>
-              {{ Form::model($category = new App\Category,['route' => 'category.store', 'files' => true, ]) }}
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-3">
-                        {{ Form::label('image') }}
-                        {{ Form::file('image',['class' => 'form-control']) }}
-                    </div>
-                    <div class="col-3">
-                        {{ Form::label('name') }}
-                        {{ Form::text('name',null,['class' => 'form-control' , 'placeholder' => 'Name' ]) }}
-                    </div>
-                    <div class="col-3">
-                        {{ Form::label('cta') }}
-                        {{ Form::text('cta',null,['class' => 'form-control' , 'placeholder' => 'CTA']) }}
-                    </div>
-                    <div class="col-3">
-                        {{ Form::label('order') }}
-                        {{ Form::number('order',null,['class' => 'form-control' , 'placeholder' => 'Order']) }}
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-2">
-                        {{ Form::submit('Save',['class' => 'btn btn-primary mt-4']) }}
-                    </div>
-                  </div>
-                </div>
-              {{ Form::close() }}
+              @yield('category_form')
             </div>
           </div>
         </div>
@@ -43,28 +17,49 @@
     </div>
   </div>
 </div>
-<div class="container-fluid">
-  <table class="table table-hover mt-5">
-    <thead>
-      <tr>
-        <th scope="col">{{  __('Image')  }}</th>
-        <th scope="col">{{  __('Name')  }}</th>
-        <th scope="col">{{  __('CTA')  }}</th>
-        <th scope="col">{{  __('Order')  }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach($categories as $category)
-      <tr> 
-        <td><img src="{{ url('storage/categories/'.$category->image) }}" alt="{{$category->name}}" width="100px" height="100px"></td>
-        <td>{{$category->name}}</td>
-        <td>{{$category->cta}}</td>
-        <td>{{$category->order}}</td>
-      </tr>
-      @endforeach
-    </tbody>
-  </table>
-</div>
+@if ($action == 'create')
+  <div class="container-fluid">
+    <table class="table table-hover mt-5">
+      <thead>
+        <tr>
+          <th scope="col">{{  __('Image')  }}</th>
+          <th scope="col">{{  __('Name')  }}</th>
+          <th scope="col">{{  __('Description')  }}</th>
+          <th scope="col">{{  __('CTA')  }}</th>
+          <th scope="col">{{  __('Order')  }}</th>
+          <th scope="col">{{  __('Edit')  }}</th>
+          <th scope="col">{{  __('Delete')  }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($categories as $category)
+        <tr> 
+          <td><img src="{{ url('storage/categories/'.$category->image) }}" alt="{{$category->name}}" width="100px" height="100px"></td>
+          <td>{{$category->name}}</td>
+          <td>
+            <div style="width:300px; text-align:justify; word-break:break-all;">
+              {!! wordwrap($category->description,80,"<br>\n") !!}
+            </div>
+          </td>
+          <td>{{$category->cta}}</td>
+          <td>{{$category->order}}</td>
+          <td>
+            {!! Form::open(['method' => 'GET', 'action' => ['CategoryController@edit', $category->id]])!!}
+              {!! Form::submit('Edit',['class' => 'btn btn-primary mt-4']) !!}
+            {!! Form::close() !!}
+          </td>
+          <td>
+              {!! Form::open(['method' => 'DELETE', 'action' => ['CategoryController@destroy', $category->id]])!!}
+              {!! Form::submit('Delete',['class' => 'btn btn-primary mt-4']) !!}
+            {!! Form::close() !!}
+          </td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+  </div>
+@endif
+
  
 @endsection
 

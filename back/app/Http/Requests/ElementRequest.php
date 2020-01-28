@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryRequest extends FormRequest
+class ElementRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +25,10 @@ class CategoryRequest extends FormRequest
     {
         return [
             'image' => ['required'],
-            'name' => ['required'],
-            'cta' => ['required'],
-            'order' => ['required', 'numeric'],
-            'description' => ['required']
+            'link' => ['required'],
+            'description' => ['required'],
+            'ratio' => ['required', 'numeric'],
+            'category_id' => ['required'],
         ];
     }
 }

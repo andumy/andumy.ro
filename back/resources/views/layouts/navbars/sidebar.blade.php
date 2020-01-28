@@ -72,12 +72,12 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-desktop text-blue"></i> {{ __('Panels') }}
+                    <a class="nav-link" href="{{ route('category.index') }}">
+                        <i class="fas fa-desktop text-blue"></i> {{ __('Categories') }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('element.index') }}"">
                         <i class="fas fa-sitemap text-orange"></i> {{ __('Elements') }}
                     </a>
                 </li>
@@ -87,12 +87,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-list text-green"></i> {{ __('Details') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ENV('SITE_NAME')}}">
                         <img src="{{ asset('argon') }}/img/brand/logo_icon.svg" style="max-height:20px;padding-right:17px;"> {{ __('Site') }}
                     </a>
                 </li>
