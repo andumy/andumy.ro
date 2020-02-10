@@ -77,7 +77,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('element.index') }}"">
+                    <a class="nav-link" href="{{ route('element.index') }}">
                         <i class="fas fa-sitemap text-orange"></i> {{ __('Elements') }}
                     </a>
                 </li>

@@ -14,11 +14,13 @@
 
 Auth::routes();
 
-Route::resource('/category','CategoryController');
-Route::resource('/element','ElementController');
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::group(['middleware' => 'auth'], function () {
+
+	Route::resource('/category','CategoryController');
+	Route::resource('/element','ElementController');
+	Route::get('/home', 'HomeController@index')->name('home');
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
