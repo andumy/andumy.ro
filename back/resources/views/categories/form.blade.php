@@ -20,10 +20,10 @@
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="col-9">
+            <div class="col-8">
               <div class="container-fluid">
                 <div class="row">
-                  <div class="col-1">
+                  <div class="col-6 col-lg-1">
                     {{ Form::label('order', 'Order',['class' => 'form-label mt-4']) }}
                     @if ($action === 'create')
                       {{ Form::number('order',null,['class' => 'form-control']) }}
@@ -31,7 +31,7 @@
                       {{ Form::number('order',$category->order,['class' => 'form-control' ]) }}
                     @endif
                   </div>
-                  <div class="col-11">
+                  <div class="col-6 col-lg-11">
                     {{ Form::label('name','Name',['class' => 'form-label mt-4']) }}
                     @if ($action === 'create')
                       {!! Form::text('name', null, ['class' => 'form-control']) !!}   
@@ -52,7 +52,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-3">
+            <div class="col-4">
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-12">
@@ -80,11 +80,13 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-6">
+                  <div class="col-12 col-xl-6">
                     {!! Html::decode(Form::label('image','<i class="material-icons">backup</i> Upload file',['id' => 'upload', 'class' => 'custom-file-upload mt-4'])) !!}
                     {!! Form::file('image') !!}
                   </div>
-                  <div class="col-6">
+                </div>
+                <div class="row">
+                  <div class="col-12 col-xl-4">
                     {!! Form::label(null,'',['class' => 'mt-4']) !!}
                     {{ Form::submit('Save',['class' => 'btn btn-primary mt-4']) }}
                   </div>
@@ -100,23 +102,5 @@
 @endsection
 
 @push('js')
-  <script>
-    var input = document.getElementById( 'image' );
-    var infoArea = document.getElementById( 'upload' );
-
-    input.addEventListener( 'change', showFileName );
-
-    function showFileName( event ) {
-      
-      // the change event gives us the input it occurred in 
-      var input = event.srcElement;
-      
-      // the input has an array of files in the `files` property, each one has a name that you can use. We're just using the name here.
-      var fileName = `${input.files[0].name.substring(0,10)}...`;
-      infoArea.classList.add('active');
-
-      // use fileName however fits your app best, i.e. add it into a div
-      infoArea.innerHTML = '<i class="material-icons">backup</i>' + fileName;
-    }
-  </script>
+  <script src="{{ asset('js') }}/upload-file-style.js"></script>
 @endpush

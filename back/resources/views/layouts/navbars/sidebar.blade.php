@@ -65,18 +65,6 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('table') }}">
-          <i class="material-icons">content_paste</i>
-            <p>{{ __('Table List') }}</p>
-        </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('icons') }}">
-          <i class="material-icons">bubble_chart</i>
-          <p>{{ __('Icons') }}</p>
-        </a>
-      </li>
       <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('notifications') }}">
           <i class="material-icons">notifications</i>

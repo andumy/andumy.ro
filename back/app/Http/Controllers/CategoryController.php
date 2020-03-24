@@ -59,22 +59,6 @@ class CategoryController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Category $category)
-    {
-        $elements = Element::where('category_id',$category->id)->get();
-
-        return view('categories.show')->with([
-            'elements' => $elements,
-            'category' => $category
-            ]);
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

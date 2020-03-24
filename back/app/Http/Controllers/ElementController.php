@@ -19,11 +19,9 @@ class ElementController extends Controller
     public function index()
     {
         $elements = Element::orderBy('category_id')->get();
-        $category_list = Category::all()->pluck('name','id');
-        return view('elements.create')->with([
-            'elements' => $elements,
-            'action' => 'create',
-            'category_list' => $category_list
+        
+        return view('elements.index')->with([
+            'elements' => $elements
             ]);
     }
 
@@ -34,7 +32,11 @@ class ElementController extends Controller
      */
     public function create()
     {
-        //
+        $category_list = Category::all()->pluck('name','id');
+        return view('elements.form')->with([
+            'action' => 'create',
+            'category_list' => $category_list
+        ]);
     }
 
     /**
@@ -60,17 +62,6 @@ class ElementController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Element  $element
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Element $element)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int $id
@@ -80,7 +71,7 @@ class ElementController extends Controller
     {
         $element = Element::findOrFail($id);
         $category_list = Category::all()->pluck('name','id');
-        return view('elements.edit')->with([
+        return view('elements.form')->with([
             'element' => $element,
             'action' => 'edit',
             'category_list' => $category_list

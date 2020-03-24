@@ -18,21 +18,13 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
 
-	Route::resource('/category','CategoryController');
-	Route::resource('/element','ElementController');
+	Route::resource('/category','CategoryController')->except(['show']);
+	Route::resource('/element','ElementController')->except(['show']);
 	Route::get('/home', 'HomeController@index')->name('home');
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
-
-	Route::get('table-list', function () {
-		return view('pages.table_list');
-	})->name('table');
-
-	Route::get('icons', function () {
-		return view('pages.icons');
-	})->name('icons');
 
 	Route::get('notifications', function () {
 		return view('pages.notifications');
