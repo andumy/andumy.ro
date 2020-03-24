@@ -25,5 +25,19 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+
+	Route::get('table-list', function () {
+		return view('pages.table_list');
+	})->name('table');
+
+	Route::get('icons', function () {
+		return view('pages.icons');
+	})->name('icons');
+
+	Route::get('notifications', function () {
+		return view('pages.notifications');
+	})->name('notifications');
+
 });
+
 

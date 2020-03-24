@@ -20,9 +20,8 @@ class CategoryController extends Controller
     public function index()
     {   
         $categories = Category::orderBy('order')->get();
-        return view('categories.create')->with([
-            'categories' => $categories,
-            'action' => 'create'
+        return view('categories.index')->with([
+            'categories' => $categories
             ]);
     }
 
@@ -33,7 +32,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        return view('categories.form')->with([
+            'action' => 'create'
+        ]);
     }
 
     /**
@@ -82,7 +83,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        return view('categories.edit')->with([
+        return view('categories.form')->with([
             'category' => $category,
             'action' => 'edit'
         ]);

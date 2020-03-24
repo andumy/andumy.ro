@@ -1,58 +1,122 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-3">
-        {{ Form::label('image') }}
-        {{ Form::file('image',['class' => 'form-control']) }}
+@extends('layouts.app', ['activePage' => 'categories', 'titlePage' => __('Categories')])
+@section('content')
+  <div class="header bg-gradient-primary pb-5 pt-5 pt-md-5"></div>
+
+  @switch($action)
+      @case('create')
+          {!! Form::model($caregory = new App\Category, ['method' => 'POST', 'action' => 'CategoryController@store', 'files' => 'true']) !!}
+          @break
+      @case('edit')
+          {!! Form::model($category, ['method' => 'PATCH', 'action' => ['CategoryController@update',$category], 'files' => 'true']) !!}
+          @break
+      @default
+          {!! Form::model($caregory = new App\Category, ['method' => 'POST', 'action' => 'CategoryController@store', 'files' => 'true']) !!}
+  @endswitch
+
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title ">{{ __('Add New Category')}}</h4>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-9">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-1">
+                    {{ Form::label('order', 'Order',['class' => 'form-label mt-4']) }}
+                    @if ($action === 'create')
+                      {{ Form::number('order',null,['class' => 'form-control']) }}
+                    @else
+                      {{ Form::number('order',$category->order,['class' => 'form-control' ]) }}
+                    @endif
+                  </div>
+                  <div class="col-11">
+                    {{ Form::label('name','Name',['class' => 'form-label mt-4']) }}
+                    @if ($action === 'create')
+                      {!! Form::text('name', null, ['class' => 'form-control']) !!}   
+                    @else
+                      {!! Form::text('name', $category->name, ['class' => 'form-control']) !!}   
+                    @endif
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    {{ Form::label('description','Description',['class' => 'form-label mt-4']) }}
+                    @if ($action === 'create')
+                      {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+                    @else
+                      {!! Form::textarea('description', $category->description, ['class' => 'form-control']) !!}
+                    @endif
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-12">
+                    {{ Form::label('headline', 'Headline',['class' => 'form-label mt-4']) }}
+                    @if ($action === 'create')
+                      {!! Form::text('headline', null, ['class' => 'form-control']) !!}   
+                    @else
+                      {!! Form::text('headline', $category->headline, ['class' => 'form-control']) !!}   
+                    @endif
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    {{ Form::label('cta', 'Cta',['class' => 'form-label mt-4']) }}
+                    @if ($action === 'create')
+                      {!! Form::text('cta', null, ['class' => 'form-control']) !!}
+                    @else
+                      {!! Form::text('cta', $category->cta, ['class' => 'form-control']) !!}
+                    @endif
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    {!! Form::label(null,'Image',['class' => 'mt-4']) !!}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    {!! Html::decode(Form::label('image','<i class="material-icons">backup</i> Upload file',['id' => 'upload', 'class' => 'custom-file-upload mt-4'])) !!}
+                    {!! Form::file('image') !!}
+                  </div>
+                  <div class="col-6">
+                    {!! Form::label(null,'',['class' => 'mt-4']) !!}
+                    {{ Form::submit('Save',['class' => 'btn btn-primary mt-4']) }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-3">
-        {{ Form::label('name') }}
-        @if ($action === 'create')
-          {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('Enter Name ...')]) !!}   
-        @else
-          {!! Form::text('name', $category->name, ['class' => 'form-control', 'placeholder' => trans('Enter Name ...')]) !!}   
-        @endif
-    </div>
-    <div class="col-3">
-        {{ Form::label('cta') }}
-        @if ($action === 'create')
-          {!! Form::text('cta', null, ['class' => 'form-control', 'placeholder' => trans('Enter CTA ...')]) !!}
-        @else
-          {!! Form::text('cta', $category->cta, ['class' => 'form-control', 'placeholder' => trans('Enter CTA ...')]) !!}
-        @endif
-    </div>
-    <div class="col-3">
-        {{ Form::label('order') }}
-        @if ($action === 'create')
-          {{ Form::number('order',null,['class' => 'form-control' , 'placeholder' => trans('Order ...')]) }}
-        @else
-          {{ Form::number('order',$category->order,['class' => 'form-control' , 'placeholder' => trans('Order ...')]) }}
-        @endif
-        
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-6 offset-3">
-        {{ Form::label('headline') }}
-        @if ($action === 'create')
-          {!! Form::text('headline', null, ['class' => 'form-control', 'placeholder' => trans('Enter Name ...')]) !!}   
-        @else
-          {!! Form::text('headline', $category->headline, ['class' => 'form-control', 'placeholder' => trans('Enter Name ...')]) !!}   
-        @endif
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-6 offset-3">
-      {{ Form::label('Description') }}
-      @if ($action === 'create')
-        {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => trans('Enter Description ...')]) !!}
-      @else
-        {!! Form::textarea('description', $category->description, ['class' => 'form-control', 'placeholder' => trans('Enter Description ...')]) !!}
-      @endif
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-2">
-        {{ Form::submit('Save',['class' => 'btn btn-primary mt-4']) }}
-    </div>
-  </div>
-</div>
+
+  {!! Form::close() !!}
+@endsection
+
+@push('js')
+  <script>
+    var input = document.getElementById( 'image' );
+    var infoArea = document.getElementById( 'upload' );
+
+    input.addEventListener( 'change', showFileName );
+
+    function showFileName( event ) {
+      
+      // the change event gives us the input it occurred in 
+      var input = event.srcElement;
+      
+      // the input has an array of files in the `files` property, each one has a name that you can use. We're just using the name here.
+      var fileName = `${input.files[0].name.substring(0,10)}...`;
+      infoArea.classList.add('active');
+
+      // use fileName however fits your app best, i.e. add it into a div
+      infoArea.innerHTML = '<i class="material-icons">backup</i>' + fileName;
+    }
+  </script>
+@endpush
