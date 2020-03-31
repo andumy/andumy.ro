@@ -1,0 +1,21 @@
+version: '3.5'
+
+services:
+  react-app:
+    build:
+      context: './docker/react'
+    container_name: react-app
+    environment:
+      - NODE_ENV=${NODE_ENV}
+    volumes:
+        - '.:/app'
+    ports:
+      - ${HOST_PORT}:3000
+    networks:
+      backend:
+        aliases:
+          - react-app
+
+networks:
+  backend:
+    name: backend-network
