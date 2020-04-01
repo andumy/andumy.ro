@@ -55,5 +55,5 @@ RUN mkdir -p /home/devuser/.composer && \
 #7. Config mysqli
 RUN docker-php-ext-install pdo pdo_mysql
 
-#8. Config node
-RUN apt-get install npm
+
+
