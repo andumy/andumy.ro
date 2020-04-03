@@ -1,0 +1,20 @@
+import { 
+        SET_ELEMENT, 
+        ElementActionTypes 
+        } from '../types/Element/actions';
+import { Element } from "../types/Element/Element";
+
+const elementReducerDefaultState:Element[] = [];
+
+const elementReducer = (state = elementReducerDefaultState, action:ElementActionTypes): Element[] => {
+    switch(action.type){
+        case SET_ELEMENT:
+            return action.elements;
+            break;
+        default:
+            return state;
+            break;
+    }
+}
+
+export {elementReducer}
