@@ -12,7 +12,6 @@ class ApiController extends Controller
     //login for new api user
     public function login(Request $request){
 
-
         $valid_data = $request->validate([
             'email' => 'required|email',
             'password' => 'required|string'
@@ -31,6 +30,7 @@ class ApiController extends Controller
             'access_token' => $accessToken
         ]);
     }
+    
     /**
      * Consume all categories
      *
