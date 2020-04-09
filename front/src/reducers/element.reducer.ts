@@ -1,8 +1,8 @@
-import { 
-        SET_ELEMENT, 
+import {  
         ElementActionTypes 
         } from '../types/Element/actions';
 import { Element } from "../types/Element/Element";
+import { SET_ELEMENT } from './../constants/element.constants';
 
 const elementReducerDefaultState:Element[] = [];
 

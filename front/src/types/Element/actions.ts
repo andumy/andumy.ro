@@ -1,7 +1,9 @@
 import {Element} from './Element'
+import {
+    SET_ELEMENT,
+    EDIT_ELEMENT
+} from '../../constants/element.constants';
 
-export const SET_ELEMENT = "SET_ELEMENT";
-export const EDIT_ELEMENT = "EDIT_ELEMENT";
 
 export interface SetElementAction {
     type: typeof SET_ELEMENT;

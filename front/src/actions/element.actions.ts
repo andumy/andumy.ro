@@ -1,8 +1,8 @@
 import { Element } from "../types/Element/Element";
 import { AppActions } from "../types/actions";
-import { SET_ELEMENT } from "../types/Element/actions";
+import { SET_ELEMENT } from "../constants/element.constants";
 
-export const setElement = (element: Element): AppActions =>({
+export const setElement = (elements: Element[]): AppActions =>({
     type: SET_ELEMENT,
-    element
+    elements
 })

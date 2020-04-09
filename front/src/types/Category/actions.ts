@@ -1,11 +1,15 @@
-import {Category} from './Category'
+import {Category} from './Category';
+import {
+    SET_CATEGORY,
+    EDIT_CATEGORY
+} from '../../constants/category.constants';
 
-export const SET_CATEGORY = "SET_CATEGORY";
-export const EDIT_CATEGORY = "EDIT_CATEGORY";
+
+
 
 export interface SetCategoryAction {
     type: typeof SET_CATEGORY;
-    category: Category;
+    category: Category[];
 }
 export interface EditCategoryAction {
     type: typeof EDIT_CATEGORY;

@@ -1,22 +1,21 @@
-import { createStore, StoreEnhancer } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import rootReducer from '../reducers';
+import thunk from 'redux-thunk';
 
-
-//devtool typescript windows setup
-type WindowWithDevTools = Window & {
-__REDUX_DEVTOOLS_EXTENSION__: () => StoreEnhancer<unknown, {}>
+declare global {
+    interface Window {
+        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    }
 }
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const isReduxDevtoolsExtenstionExist = 
-(arg: Window | WindowWithDevTools): 
-    arg is WindowWithDevTools  => {
-    return  '__REDUX_DEVTOOLS_EXTENSION__' in arg;
-}
+
 
 //store creation
 const store = createStore(
 rootReducer,
-isReduxDevtoolsExtenstionExist(window) ? 
-window.__REDUX_DEVTOOLS_EXTENSION__() : undefined);
+composeEnhancers(
+    applyMiddleware(thunk)
+));
 
-export default store;
+export default store; 
