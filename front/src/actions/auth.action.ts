@@ -1,9 +1,5 @@
 import { SET_AUTH_TOKEN } from "../constants/auth.constants";
-import { AppActions } from '../types/actions';
-import { ThunkAction } from 'redux-thunk';
-import { AppState } from '../reducers';
 import { Auth } from '../services/CRUD';
-import { Auth as AuthType } from './../types/Auth/Auth';
 import { ThunkResult } from '../types/actions';
 
 
@@ -24,13 +20,14 @@ export const getAuthToken = ():ThunkResult<void> => {
                 secret: store.auth.secret,
                 token: res.content.access_token,
             }
-            dispatch(setAuthToken(auth));
+            dispatch({
+                type: SET_AUTH_TOKEN,
+                auth
+            })
+
         })
+
+        
     }
 }
 
-
-export const setAuthToken = (auth: AuthType): AppActions => ({
-    type: SET_AUTH_TOKEN,
-    auth
-})

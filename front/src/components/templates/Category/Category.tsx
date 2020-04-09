@@ -12,19 +12,18 @@ const Category = () => {
     return(
         <div>
             {
-               categories.map((item, key) =>
-               <div>
-                   <div>
-                        {item.name}
+                categories.map((item, key) =>
+                    <div>
+                        <div>
+                                {item.name}
+                            </div>
+                            <p>
+                                {item.cta}
+                            </p>
+                            <img src={item.image} alt=""/>
                     </div>
-                    <p>
-                        {item.cta}
-                    </p>
-                    <img src={item.image} alt=""/>
-               </div>
-                
-            )}
-            
+                )
+            }
             <div onClick={()=> dispatch(action.getCategory())}>getCategories</div>
         </div>
     );

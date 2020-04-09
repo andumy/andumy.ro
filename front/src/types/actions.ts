@@ -8,3 +8,5 @@ export type AppActions = CategoryActionTypes | ElementActionTypes | AuthActionTy
 
 export type ThunkResult<R> = ThunkAction<R, AppState, undefined, AppActions>;
 
+
+
