@@ -40,51 +40,10 @@
                     @endif
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-12">
-                    {{ Form::label('description','Description',['class' => 'form-label mt-4']) }}
-                    @if ($action === 'create')
-                      {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
-                    @else
-                      {!! Form::textarea('description', $category->description, ['class' => 'form-control']) !!}
-                    @endif
-                  </div>
-                </div>
               </div>
             </div>
             <div class="col-4">
               <div class="container-fluid">
-                <div class="row">
-                  <div class="col-12">
-                    {{ Form::label('headline', 'Headline',['class' => 'form-label mt-4']) }}
-                    @if ($action === 'create')
-                      {!! Form::text('headline', null, ['class' => 'form-control']) !!}   
-                    @else
-                      {!! Form::text('headline', $category->headline, ['class' => 'form-control']) !!}   
-                    @endif
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12">
-                    {{ Form::label('cta', 'Cta',['class' => 'form-label mt-4']) }}
-                    @if ($action === 'create')
-                      {!! Form::text('cta', null, ['class' => 'form-control']) !!}
-                    @else
-                      {!! Form::text('cta', $category->cta, ['class' => 'form-control']) !!}
-                    @endif
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12">
-                    {!! Form::label(null,'Image',['class' => 'mt-4']) !!}
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12 col-xl-6">
-                    {!! Html::decode(Form::label('image','<i class="material-icons">backup</i> Upload file',['id' => 'upload', 'class' => 'custom-file-upload mt-4'])) !!}
-                    {!! Form::file('image') !!}
-                  </div>
-                </div>
                 <div class="row">
                   <div class="col-12 col-xl-4">
                     {!! Form::label(null,'',['class' => 'mt-4']) !!}

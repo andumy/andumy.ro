@@ -1,0 +1,13 @@
+@import '../../../../assets/scss/variables';
+
+.menuLink{
+    font-size: 150px;    
+    font-family: 'Montserrat Black';
+    opacity: 0.4;
+    cursor: pointer;
+    line-height: 150px;
+    padding:15px;
+    &:hover{
+        opacity: 1;
+    }
+}

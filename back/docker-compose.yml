@@ -1,12 +1,12 @@
 version: '3.5'
 
 services:
-  laravel-app:
+  andumy-backend:
     build:
       context: './docker/apache'
       args:
         uid: ${UID}
-    container_name: laravel-app
+    container_name: andumy-backend
     environment:
       - APACHE_RUN_USER=#${UID}
       - APACHE_RUN_GROUP=#${UID}
@@ -15,13 +15,13 @@ services:
     ports:
       - ${HOST_PORT}:80
     networks:
-      backend:
+      andumy-backend-network:
         aliases:
-          - laravel-app
+          - andumy-backend
 
-  mysql-db:
+  andumy-db:
     image: mysql:5.7
-    container_name: mysql-db
+    container_name: andumy-db
     volumes:
       - ./docker/mysql/run/var:/var/lib/mysql
     environment:
@@ -30,10 +30,10 @@ services:
       - MYSQL_USER=${DB_USERNAME}
       - MYSQL_PASSWORD=${DB_PASSWORD}
     networks:
-      backend:
+      andumy-backend-network:
         aliases:
-          - db
+          - andumy-db
 
 networks:
-  backend:
-    name: backend-network
+  andumy-backend-network:
+    name: andumy-backend-network

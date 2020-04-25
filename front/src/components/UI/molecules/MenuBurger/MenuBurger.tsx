@@ -1,23 +1,25 @@
-import React from 'react';
-import Fa from '../../atoms/fa/Fa';
+import React, { useState } from 'react';
 import theme from './MenuBurger.module.scss'
+import MenuOverlay from './../MenuOverlay/MenuOverlay';
 
-interface MenuBurgerType {
-    color: string,
-}
 
-const MenuBurger:React.FC<MenuBurgerType> = ({
-    color='normal'
-}) => {
 
-    const style = color === 'normal' ? theme.burger_Normal : theme.burger_Inverse;
+const MenuBurger = () => {
+    const [isClicked, setClick] = useState(false);
+
+    const style = isClicked ? theme.burger__inverse: theme.burger__normal ;
 
     return(
-        <Fa
-            type='fas'
-            icon='bars'
-            className={ style }
-        />
+        <div>    
+            <div className={style} onClick={() => setClick(!isClicked)}>
+                <span className={theme.burger__line}></span>
+                <span className={theme.burger__line}></span>
+                <span className={theme.burger__line}></span>
+            </div>
+            <MenuOverlay 
+                isShowned = {isClicked}
+            />
+        </div>
     );
 
 }

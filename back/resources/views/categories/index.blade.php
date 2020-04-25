@@ -24,11 +24,7 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">{{  __('Image')  }}</th>
               <th scope="col">{{  __('Name')  }}</th>
-              <th scope="col">{{  __('Headline')  }}</th>
-              <th scope="col">{{  __('Description')  }}</th>
-              <th scope="col">{{  __('CTA')  }}</th>
               <th scope="col">{{  __('Order')  }}</th>
               <th scope="col">{{  __('Edit')  }}</th>
               <th scope="col">{{  __('Delete')  }}</th>
@@ -37,15 +33,7 @@
           <tbody>
             @foreach($categories as $category)
             <tr> 
-              <td><img src="{{ url('storage/categories/'.$category->image) }}" alt="{{$category->name}}" width="100px" height="100px"></td>
               <td>{{$category->name}}</td>
-              <td>{{$category->headline}}</td>
-              <td>
-                <div style="width:300px; text-align:justify; word-break:break-all;">
-                  {!! wordwrap($category->description,50,"<br>\n") !!}
-                </div>
-              </td>
-              <td>{{$category->cta}}</td>
               <td>{{$category->order}}</td>
               <td>
                 {!! Form::open(['method' => 'GET', 'action' => ['CategoryController@edit', $category->id]])!!}

@@ -4,7 +4,7 @@ import { AppState } from "../../reducers";
 import { Category as CategoryType} from '../../types/Category/Category';
 import { useDispatch,useSelector } from 'react-redux';
 
-import MenuLink from '../UI/molecules/MenuLink/MenuLink';
+// import MenuLink from '../UI/atoms/MenuLink/MenuLink';
 import MenuBurger from './../UI/molecules/MenuBurger/MenuBurger';
 
 const Tokens = () => {
@@ -13,22 +13,6 @@ const Tokens = () => {
 
     return(
         <div>
-            <div>   
-                {
-                    categories.map((category, i) => 
-                        <MenuLink 
-                            name={category.name}
-                            key={category.name}
-                        />
-                    )
-                }
-            </div>
-            <div>
-
-                <MenuBurger
-                    color={"normal"}
-                />
-            </div>
         </div>
     )
 

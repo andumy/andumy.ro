@@ -46,12 +46,6 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         $data = (object) $request->except(['_token','_method']);
-        if($image = $request->file('image')){
-            $path = storage_path('app/public/categories');
-            $name = strtotime(Carbon::now()).$image->getClientOriginalName();
-            $image->move($path,$name);
-            $data->image = $name;
-        }
 
         $category = new Category((array)$data);
         $category->save();
@@ -85,15 +79,6 @@ class CategoryController extends Controller
         $data = (object) $request->except(['_token','_method']);
         $category = Category::findOrFail($id);
         
-
-        if($image = $request->file('image')){
-            Storage::delete('/public/categories/'.$category->image);
-            $path = storage_path('app/public/categories');
-            $name = strtotime(Carbon::now()).$image->getClientOriginalName();
-            $image->move($path,$name);
-            $data->image = $name;
-        }
-        
         $category->update((array)$data);
         return redirect()->route('category.index');
     }
@@ -105,8 +90,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Category $category)
-    {
-        Storage::delete('/public/categories/'.$category->image);       
+    {   
         $category->delete();
         return redirect()->route('category.index');
     }
