@@ -1,0 +1,12 @@
+@import "../../../../assets/scss/_variables.scss";
+.burger{
+    
+    &_Normal{
+        font-size:30px;
+        padding:10px;
+        color: $color-yellow
+    }
+    &_Inverse{
+        color: $color-black;
+    }
+}

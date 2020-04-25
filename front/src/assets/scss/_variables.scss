@@ -1,0 +1,18 @@
+// font style
+@font-face {
+    font-family: 'Montserrat Black';
+    src: url(../fonts/Montserrat-Black.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'Montserrat SemiBlack';
+    src: url(../fonts/Montserrat-SemiBold.ttf) format('truetype');
+}
+
+//font variables
+$font-thick: 'Montserrat Black';
+$font-normal: 'Montserrat SemiBlack';
+
+// color variables
+$color-yellow: #fcd804;
+$color-dark: #111111;
+$color-black: #000000;

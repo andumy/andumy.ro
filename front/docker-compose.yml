@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: react-app
+    container_name: andumy-front
     environment:
       - NODE_ENV=${NODE_ENV}
     volumes:
@@ -14,11 +14,11 @@ services:
     ports:
       - ${HOST_PORT}:3000
     networks:
-      backend:
+      andumy-backend-network:
         aliases:
           - react-app
     stdin_open: true
     
 networks:
-  backend:
-    name: backend-network
+  andumy-backend-network:
+    name: andumy-backend

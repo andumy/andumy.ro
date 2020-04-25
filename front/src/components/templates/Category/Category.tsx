@@ -3,7 +3,7 @@ import * as action from './../../../actions/category.action';
 import { useDispatch,useSelector } from 'react-redux';
 import { AppState } from '../../../reducers';
 import { Category as CategoryType } from '../../../types/Category/Category';
-
+import Navbar from '../../UI/organisms/Navbar';
 const Category = () => {
     
     const dispatch = useDispatch();
@@ -11,6 +11,7 @@ const Category = () => {
 
     return(
         <div>
+            <Navbar/>
             {
                 categories.map((item, key) =>
                     <div>
