@@ -1,24 +1,21 @@
 @import "../../../../assets/scss/_variables.scss";
 
 .burger{
-    &__normal{
         padding: 10px;
         display: flex;
         flex-direction: column;
         z-index:1;
         position: relative;
         cursor: pointer;
+
+    &__normal{
+        @extend .burger;
         span{
             background-color: $color-yellow;
         }
     }
     &__inverse{
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        z-index:1;
-        position: relative;
-        cursor: pointer;
+        @extend .burger;
         span{
             background-color: $color-black;
         }

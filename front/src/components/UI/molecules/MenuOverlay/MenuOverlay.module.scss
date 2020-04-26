@@ -2,9 +2,13 @@
 
 .menu{
     &__overlay{
+        &__generic{
+            transition: all 1s ease-in-out;
+        }
         &__container{
-            min-height: 100vh;
+            height: 100vh;
             width: 100vw;
+            // border-radius: 50%;
             background-color: $color-yellow;
             display: flex;
             flex-direction: column;
