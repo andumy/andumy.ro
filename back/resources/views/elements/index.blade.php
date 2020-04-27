@@ -25,7 +25,10 @@
           <thead>
             <tr>
               <th scope="col">{{  __('Image')  }}</th>
-              <th scope="col">{{  __('Ratio')  }}</th>
+              <th scope="col">{{  __('Title')  }}</th>
+              <th scope="col">{{  __('Client')  }}</th>
+              <th scope="col">{{  __('Year')  }}</th>
+              <th scope="col">{{  __('Job Type')  }}</th>
               <th scope="col">{{  __('Description')  }}</th>
               <th scope="col">{{  __('Link')  }}</th>
               <th scope="col">{{  __('Category')  }}</th>
@@ -37,9 +40,12 @@
             @foreach($elements as $element)
             <tr> 
               <td><img src="{{ url('storage/elements/'.$element->image) }}" alt="{{$element->description}}" width="100px" height="100px"></td>
-              <td>{{$element->ratio}}</td>
+              <td>{{$element->title}}</td>
+              <td>{{$element->client->name}}</td>
+              <td>{{$element->year}}</td>
+              <td>{{$element->jobtype->title}}</td>
               <td>{!! wordwrap($element->description,60,"<br>\n") !!}</td>
-              <td>{!! wordwrap($element->link,60,"<br>\n") !!}</td>
+              <td>{!! wordwrap($element->link,40,"<br>\n") !!}</td>
               <td>
                 {!! Form::open(['method' => 'GET', 'action' => ['CategoryController@edit', $element->category]])!!}
                   {!! Form::submit($element->category->name,['class' => 'btn btn-primary mt-4']) !!}

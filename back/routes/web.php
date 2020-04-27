@@ -21,6 +21,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/', 'HomeController@index');
 	Route::resource('/category','CategoryController')->except(['show']);
 	Route::resource('/element','ElementController')->except(['show']);
+	Route::resource('/jobtype','JobtypeController')->except(['show']);
+	Route::resource('/client','ClientController')->except(['show']);
 	Route::get('/home', 'HomeController@index')->name('home');
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);

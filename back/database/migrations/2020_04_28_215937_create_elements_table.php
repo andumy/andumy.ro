@@ -16,12 +16,23 @@ class CreateElementsTable extends Migration
         Schema::create('elements', function (Blueprint $table) {
             $table->increments('id');
             $table->string('image');
-            $table->integer('ratio');
+            $table->string('title');
             $table->string('description');
             $table->string('link');
-            $table->integer('category_id')->unsigned();;
+            $table->integer('year');
+
+            $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')
-                    ->onUpdate('cascade')->onDelete('cascade');
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->integer('jobtype_id')->unsigned();
+            $table->foreign('jobtype_id')->references('id')->on('jobtypes')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->integer('client_id')->unsigned();
+            $table->foreign('client_id')->references('id')->on('clients')
+                ->onUpdate('cascade')->onDelete('cascade');
+                
             $table->timestamps();
         });
     }

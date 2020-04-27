@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Element;
+use App\Jobtype;
+use App\Client;
+
 use App\Http\Requests\ElementRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
 class ElementController extends Controller
 {
     /**
@@ -32,10 +34,16 @@ class ElementController extends Controller
      */
     public function create()
     {
-        $category_list = Category::all()->pluck('name','id');
+        $category_list = Category::all()->pluck('name','id');        
+        $jobtype_list = Jobtype::all()->pluck('title','id');
+        $client_list = Client::all()->pluck('name','id');
+
         return view('elements.form')->with([
             'action' => 'create',
-            'category_list' => $category_list
+            'category_list' => $category_list,
+            'jobtype_list' => $jobtype_list,
+            'client_list' => $client_list,
+
         ]);
     }
 
@@ -71,10 +79,15 @@ class ElementController extends Controller
     {
         $element = Element::findOrFail($id);
         $category_list = Category::all()->pluck('name','id');
+        $jobtype_list = Jobtype::all()->pluck('title','id');
+        $client_list = Client::all()->pluck('name','id');
+
         return view('elements.form')->with([
             'element' => $element,
             'action' => 'edit',
-            'category_list' => $category_list
+            'category_list' => $category_list,
+            'jobtype_list' => $jobtype_list,
+            'client_list' => $client_list,
             ]);
     }
 
@@ -111,6 +124,7 @@ class ElementController extends Controller
      */
     public function destroy(Element $element)
     {
-        //
+        $element->delete();
+        return redirect()->route('element.index');
     }
 }

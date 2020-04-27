@@ -33,6 +33,23 @@ services:
       andumy-backend-network:
         aliases:
           - andumy-db
+  
+  andumy-pma:
+    depends_on: 
+      - andumy-db
+    image: phpmyadmin/phpmyadmin
+    container_name: andumy-pma
+    volumes:
+      - ./docker/phpmyadmin/upload.ini:/usr/local/etc/php/php.ini
+    ports:
+      - '9001:80'
+    environment:
+      PMA_HOST: andumy-db
+      MYSQL_ROOT_PASSWORD: ${DB_ROOTPASSWORD}
+    networks:
+      andumy-backend-network:
+        aliases:
+          - andumy-pma
 
 networks:
   andumy-backend-network:

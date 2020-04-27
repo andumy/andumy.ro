@@ -25,9 +25,11 @@ class ElementRequest extends FormRequest
     {
         return [
             'link' => ['required'],
+            'title' => ['required'],
+            'year' => ['required','numeric'],
             'description' => ['required'],
-            'ratio' => ['required', 'numeric'],
-            'category_id' => ['required'],
+            'category_id' => ['required','numeric'],
+            'jobtype_id' => ['required','numeric'],
         ];
     }
 }

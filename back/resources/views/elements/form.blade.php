@@ -22,15 +22,23 @@
           <div class="col-8">
             <div class="container-fluid">
               <div class="row">
-                <div class="col-6 col-lg-1">
-                  {{ Form::label('ratio') }}
+                <div class="col-6 col-lg-2">
+                  {{ Form::label('year') }}
                   @if ($action === 'create')
-                    {!! Form::text('ratio', null, ['class' => 'form-control']) !!}   
+                    {!! Form::number('year', null, ['class' => 'form-control']) !!}   
                   @else
-                    {!! Form::text('ratio', $element->ratio, ['class' => 'form-control']) !!}   
+                    {!! Form::number('year', $element->year, ['class' => 'form-control']) !!}   
                   @endif
                 </div>
-                <div class="col-6 col-lg-11">
+                <div class="col-6 col-lg-4">
+                  {{ Form::label('title') }}
+                  @if ($action === 'create')
+                    {!! Form::text('title', null, ['class' => 'form-control']) !!}
+                  @else
+                    {!! Form::text('title', $element->title, ['class' => 'form-control']) !!}
+                  @endif
+                </div>
+                <div class="col-6 col-lg-6">
                   {{ Form::label('link') }}
                   @if ($action === 'create')
                     {!! Form::text('link', null, ['class' => 'form-control']) !!}
@@ -63,6 +71,24 @@
                       {{ Form::select('category_id',$category_list,$element->category->id,['class' => 'form-control']) }}
                     @endif
                   </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  {{ Form::label('client') }}
+                  @if ($action === 'create')
+                      {{ Form::select('client_id',$client_list,null,['class' => 'form-control']) }}
+                    @else
+                      {{ Form::select('client_id',$client_list,$element->client->id,['class' => 'form-control']) }}
+                    @endif
+                </div>
+                <div class="col-6">
+                  {{ Form::label('jobtype') }}
+                  @if ($action === 'create')
+                      {{ Form::select('jobtype_id',$jobtype_list,null,['class' => 'form-control']) }}
+                    @else
+                      {{ Form::select('jobtype_id',$jobtype_list,$element->jobtype->id,['class' => 'form-control']) }}
+                    @endif
                 </div>
               </div>
               <div class="row">

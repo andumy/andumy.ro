@@ -65,12 +65,24 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
+      <li class="nav-item{{ $activePage == 'jobtypes' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('jobtype.index') }}">
+          <i class="material-icons">work</i>
+          <span class="sidebar-normal">{{ __('Jobtypes') }} </span>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'clients' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('client.index') }}">
+          <i class="material-icons">how_to_reg</i>
+          <span class="sidebar-normal">{{ __('Clients') }} </span>
+        </a>
+      </li>
+      {{-- <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('notifications') }}">
           <i class="material-icons">notifications</i>
           <p>{{ __('Notifications') }}</p>
         </a>
-      </li>
+      </li> --}}
     </ul>
   </div>
 </div>

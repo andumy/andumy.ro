@@ -46,9 +46,18 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         $data = (object) $request->except(['_token','_method']);
-
-        $category = new Category((array)$data);
-        $category->save();
+        if($data->order == null){
+            if(Category::count() == 0){
+                $data->order = 0;
+            }
+            else{
+                $data->order = Category::orderBy('order','DESC')->first()->order+1;
+            }
+        }
+        if(Category::where('name',$data->name)->count() == 0){
+            $category = new Category((array)$data);
+            $category->save();
+        }
         return redirect()->route('category.index');
     }
 

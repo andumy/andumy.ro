@@ -52,7 +52,19 @@ class ApiController extends Controller
      */
     public function getElements($category_id){
         $elements = Element::where('category_id',$category_id)
-                            ->get();
+                            ->get()
+                            ->map(function ($element){
+                                
+                                return [
+                                    "description" => $element->description,
+                                    "url" => $element->url,
+                                    "image" => url('storage/elements/'.$element->image),
+                                    "year" => $element->year,
+                                    "jobtype" => $element->jobtype->title,
+                                    "client" => $element->client->name,
+                                    "title" => $element->title,
+                                ];
+                            });
         return response()
                 ->json($elements);
                 
