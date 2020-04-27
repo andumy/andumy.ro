@@ -38,11 +38,7 @@ class ApiController extends Controller
      */
     public function getCategories(){
         $categories = Category::orderBy('order','ASC')
-                        ->get()
-                        ->map(function ($category){
-                            $category->image = url('storage/categories/'.$category->image);
-                            return $category;
-                        });;
+                        ->get();
         return response()
                 ->json($categories);
                 
@@ -56,11 +52,7 @@ class ApiController extends Controller
      */
     public function getElements($category_id){
         $elements = Element::where('category_id',$category_id)
-                            ->get()
-                            ->map(function ($element){
-                                $element->image = url('storage/elements/'.$element->image);
-                                return $element;
-                            });
+                            ->get();
         return response()
                 ->json($elements);
                 
