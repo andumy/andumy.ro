@@ -38,6 +38,7 @@ const MenuOverlay:React.FC<MenuOverlayType> = ({
         [theme.menu__overlay__hidden] : !startDisplay,
 
     })
+    
     return(
         <div>
             <div className={style} ></div>
