@@ -1,9 +1,11 @@
 @import './_variables.scss';
 
+
+
 .bg{
     width:100vw;
     height:100vh;
-    
+    overflow-x: hidden;
     &__normal{
         @extend .bg;
         background-color: $color-dark;

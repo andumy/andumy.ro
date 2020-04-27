@@ -16,14 +16,9 @@ const MenuBurger = () => {
                 <span className={theme.burger__line}></span>
                 <span className={theme.burger__line}></span>
             </div>
-            {
-                isClicked ?  
-                    <MenuOverlay 
-                    isShowned = {isClicked}
-                    />
-                :
-                    '' 
-            }
+            <MenuOverlay 
+                startDisplay={isClicked}
+            />
         </div>
     );
 

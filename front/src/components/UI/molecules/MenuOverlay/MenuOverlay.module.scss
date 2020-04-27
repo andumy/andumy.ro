@@ -2,24 +2,38 @@
 
 .menu{
     &__overlay{
+
+        height: 100vh;
+        width: 100vw;
+        flex-direction: column;
+        justify-content: start;
+        align-self: start;
+        position: absolute;
+        display: flex;
+        z-index:5;
+        top: 0;
+        right: 0;
+
         &__generic{
-            transition: all 1s ease-in-out;
-        }
-        &__container{
-            height: 100vh;
-            width: 100vw;
-            // border-radius: 50%;
+            @extend .menu__overlay;
+            position: fixed;
+            transition: all 1.2s ease-in-out;
             background-color: $color-yellow;
-            display: flex;
-            flex-direction: column;
-            justify-content: start;
-            align-self: start;
-            position: absolute;
-            top: 0;
-            left: 0;
+            z-index: 1;
+        }
+
+        &__display{
+            width: 100vw;
         }
         &__hidden{
-            display: none;
+            transition: all .5s ease-in-out;
+            width: 0px;
+        }
+
+        &__container{
+            @extend .menu__overlay;
+            margin-top: 50px;
+            height: auto;
         }
     }
 }
