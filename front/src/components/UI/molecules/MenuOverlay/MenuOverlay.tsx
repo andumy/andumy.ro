@@ -5,6 +5,7 @@ import theme from './MenuOverlay.module.scss';
 import { AppState } from '../../../../reducers';
 import { Category as CategoryType } from './../../../../types/Category/Category';
 import MenuLink from '../../atoms/MenuLink/MenuLink';
+import { Utils as UtilsType } from '../../../../types/Utils/Utils';
 import  classNames  from 'classnames';
 
 
@@ -20,7 +21,6 @@ const MenuOverlay:React.FC<MenuOverlayType> = ({
     const [isDisplayed,setIsDisplayed] = useState(false);
 
     useEffect(() => {
-
         if(startDisplay){
             setTimeout(() => {
                 setIsDisplayed(true);
@@ -30,7 +30,8 @@ const MenuOverlay:React.FC<MenuOverlayType> = ({
         else{
             setIsDisplayed(false);
         }
-    },[startDisplay])
+    },[startDisplay]);
+
 
     const style = classNames({
         [theme.menu__overlay__generic]: true,
@@ -50,6 +51,7 @@ const MenuOverlay:React.FC<MenuOverlayType> = ({
                                 name={category.name}
                                 key={category.name}
                                 wait={i*100}
+                                pageId={category.id}
                             />
                         )
                     :

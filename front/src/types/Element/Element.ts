@@ -1,7 +1,9 @@
 export interface Element{
-    id: number;
-    ratio: number;
     description: string;
     url: string;
     image: string;
+    year: number;
+    jobtype: string;
+    client: string;
+    title: string;
 }

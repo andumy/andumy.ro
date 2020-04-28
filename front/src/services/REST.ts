@@ -13,7 +13,6 @@ const request = (method:Method, endpoint:string, isAuthRequired:boolean, data?:o
     
     if(isAuthRequired){
         const auth = store.getState().auth;
-        console.log(auth.token);
         headers['authorization'] = `Bearer ${auth.token}`;
     }
 

@@ -9,14 +9,14 @@ token: ""
 };
 
 const authReducer = (state = authReducerDefaultState, action: AuthActionTypes): Auth => {
-switch(action.type){ 
-    case SET_AUTH_TOKEN:
-        return action.auth;
-        break;
-    default:
-        return state;
-        break;
-}
+    switch(action.type){ 
+        case SET_AUTH_TOKEN:
+            return action.auth;
+            break;
+        default:
+            return state;
+            break;
+    }
 }
 
 export {authReducer}

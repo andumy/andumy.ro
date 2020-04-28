@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { getAuthToken } from './../../actions/auth.action';
-import { Auth } from '../../types/Auth/Auth';
+import { getAuthToken } from '../../../actions/auth.action';
+import { Auth } from '../../../types/Auth/Auth';
 import { useSelector, useDispatch } from 'react-redux';
-import { AppState } from '../../reducers';
-import { getCategory } from './../../actions/category.action';
+import { AppState } from '../../../reducers';
+import { getCategory } from '../../../actions/category.action';
 
 
 

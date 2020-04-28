@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import theme from './MenuLink.module.scss';
+import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
-
+import { setActiveCategory } from '../../../../actions/utils.action';
 interface MenuLinkProps { 
     name: string,
-    wait: number
+    wait: number,
+    pageId: number
 }
 
 const MenuLink:React.FC<MenuLinkProps> = ({
      name,
-     wait=0
+     wait=0,
+     pageId
 }) => {
 
     const [isLoading,setIsLoading] = useState(true);
+    const dispatch = useDispatch();
     useEffect(() => {
 
         setTimeout(() => {
@@ -30,7 +34,7 @@ const MenuLink:React.FC<MenuLinkProps> = ({
     })
 
     return (
-        <div className={style}>
+        <div className={style} onClick={() => dispatch(setActiveCategory(pageId))}>
             {name.toUpperCase()}
         </div>
     )
