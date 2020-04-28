@@ -11,15 +11,7 @@ const Elements:React.FC = () => {
     return (
         <div>
             <Navbar/>
-            {
-                elements.map((element,i) => 
-                    <div 
-                        key={element.description}
-                    >
-                        {element.description}
-                    </div>
-                )
-            }
+            <h1>ELEMENTS</h1>
         </div>
     )
 }

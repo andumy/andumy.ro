@@ -8,6 +8,7 @@ const Home:React.FC = () => {
     
         <div>
             <Navbar/>
+            <h1>HOME</h1>
         </div>
     );
 }

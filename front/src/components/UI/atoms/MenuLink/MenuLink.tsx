@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import theme from './MenuLink.module.scss';
 import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
-import { setActiveCategory } from '../../../../actions/utils.action';
+import { setActiveCategory, setCurrentPage } from '../../../../actions/utils.action';
+import { currentPageType } from '../../../../types/Utils/Utils';
 interface MenuLinkProps { 
     name: string,
     wait: number,

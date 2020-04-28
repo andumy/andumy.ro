@@ -13,7 +13,8 @@ export const setActiveCategory = (activeCategory:number):ThunkResult<void> => {
             type:SET_UTILS, 
             utils: {
                 ...utils,
-                activeCategory
+                activeCategory,
+                currentPage: currentPageType.element
             }
         });
     }

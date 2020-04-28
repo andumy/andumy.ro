@@ -27,9 +27,9 @@ const PageSelector:React.FC<any> = () =>{
     return (
         
         currentPage == currentPageType.home ? <Home /> :
-            currentPage == currentPageType.studio ? <Studio /> :
-                currentPage == currentPageType.category ? <Category /> :
-                    currentPage == currentPageType.element ? <Elements /> : null
+            (currentPage == currentPageType.studio ? <Studio /> :
+                (currentPage == currentPageType.category ? <Category /> :
+                    (currentPage == currentPageType.element ? <Elements /> : null)))
     )
 }
 
