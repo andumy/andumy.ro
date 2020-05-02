@@ -1,0 +1,25 @@
+@import '../../../../assets/scss/variables';
+
+.categoryBox{
+    width:520px;
+    height:520px;
+    background-color: $color-black;
+    color: $color-dark;
+    font-size: 300px;
+    font-family: 'Montserrat Black';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin:60px;
+
+    &__container{
+        @extend .categoryBox;
+    }
+
+    &:hover{
+        background-color: $color-yellow;
+        text-align: left;
+        font-size: 70px;
+    }
+}

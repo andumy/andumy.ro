@@ -6,7 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 
-import theme from './assets/scss/global.module.scss';
+
 import PageSelector from './components/functional/PageSelector/PageSelector';
 
 function App() {
@@ -15,7 +15,6 @@ function App() {
   return (
 
     <Bootstrap>
-      <div className={theme.bg__normal}>
         <Router>
           <Switch>
             <Route path="/">
@@ -23,7 +22,6 @@ function App() {
             </Route>
           </Switch>
         </Router>
-      </div>
     </Bootstrap>
   );
 }
