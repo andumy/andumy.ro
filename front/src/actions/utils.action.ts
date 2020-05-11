@@ -1,5 +1,7 @@
 import { 
-    SET_UTILS
+    SET_ACTIVE_CATEGORY,
+    SET_CURRENT_PAGE,
+    SET_SCROLL
 } from "../constants/utils.constants";
 import { ThunkResult } from '../types/actions';
 import { currentPageType }from '../types/Utils/Utils';
@@ -10,7 +12,7 @@ export const setActiveCategory = (activeCategory:number):ThunkResult<void> => {
         const state = getState();
         const { utils } = {...state};
         dispatch({
-            type:SET_UTILS, 
+            type:SET_ACTIVE_CATEGORY, 
             utils: {
                 ...utils,
                 activeCategory,
@@ -26,7 +28,7 @@ export const setCurrentPage = (currentPage:currentPageType):ThunkResult<void> =>
         const state = getState();
         const {utils} = {...state};
         dispatch({
-            type:SET_UTILS, 
+            type:SET_CURRENT_PAGE, 
             utils: {
                 ...utils,
                 currentPage

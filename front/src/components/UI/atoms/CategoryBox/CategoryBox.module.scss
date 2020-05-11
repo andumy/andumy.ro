@@ -8,10 +8,11 @@
     font-size: 300px;
     font-family: 'Montserrat Black';
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin:60px;
+    margin:30px;
 
     &__container{
         @extend .categoryBox;
@@ -20,6 +21,6 @@
     &:hover{
         background-color: $color-yellow;
         text-align: left;
-        font-size: 70px;
+        font-size: 35px;
     }
 }

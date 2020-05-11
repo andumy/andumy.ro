@@ -1,6 +1,6 @@
 export interface Utils {
     activeCategory: number ,
-    currentPage: currentPageType
+    currentPage: currentPageType,
 }
 
 export enum currentPageType {

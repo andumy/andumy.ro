@@ -1,11 +1,30 @@
 .categorySlider{
     &__container{
-        top: 0;
-        position: absolute;
+        // top: 0;
+        // position: absolute;
+        // left:30%;
+        // height: 100vh;
+        position: relative;
+        height: 100%;
+        width: 580px;
+        overflow: hidden;
+    }
+
+    &__list{
+        transition: all 0.5s ease-in-out;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        overflow-y: scroll;
+        flex-direction: column;
+        list-style: none;
+        margin:0px;
+        padding: 0px;
+    }
+
+    &__frame{
+        min-width: 100%;
+        margin: 0;
+        position: relative;
+        text-align: center;
+        flex-direction: column;
+        flex-flow: column;
     }
 }

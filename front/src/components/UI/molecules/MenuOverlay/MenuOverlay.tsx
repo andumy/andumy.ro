@@ -40,10 +40,17 @@ const MenuOverlay:React.FC<MenuOverlayType> = ({
 
     })
     
+    const scrollHandler = (e: React.WheelEvent<HTMLDivElement>) =>{
+        e.preventDefault();
+        e.stopPropagation();
+    }
     return(
         <div>
             <div className={style} ></div>
-            <div className={theme.menu__overlay__container}>
+            <div className={theme.menu__overlay__container}
+                onWheel={scrollHandler}
+            >
+
                 {
                     isDisplayed ?
                         categories.map((category, i) =>

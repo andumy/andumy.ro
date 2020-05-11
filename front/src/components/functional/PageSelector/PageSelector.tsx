@@ -13,7 +13,7 @@ import Studio from './../../pages/Studio/Studio';
 
 import { currentPageType } from '../../../types/Utils/Utils';
 import theme from './PageSelector.module.scss';
-import _ from 'lodash';
+
 const PageSelector:React.FC<any> = () =>{
 
     const utils = useSelector<AppState,UtilsType>(state => state.utils)
@@ -23,24 +23,24 @@ const PageSelector:React.FC<any> = () =>{
     interface PageStateType {
         pages: currentPageType[],
         activePage: number,
-        isScrollEnabled: boolean,
     }
+
     const [pageState,setPageState] = useState<PageStateType>({
         pages:[currentPageType.studio, currentPageType.home, currentPageType.category],
         activePage: 1,
-        isScrollEnabled: true,
     });
 
+    const [pageScroll,setPageScroll] = useState<boolean>(true);
+
     useEffect(() =>{
+        
         if(currentPage === currentPageType.element){
             dispatch(getElements(activeCategory));
         }
         setTimeout(() => {
-            setPageState({
-                ...pageState,
-                isScrollEnabled: true,
-            })
+            setPageScroll(true);
         },1000)
+
     },[currentPage])
 
     useEffect(() =>{
@@ -49,12 +49,11 @@ const PageSelector:React.FC<any> = () =>{
 
     const changePage = (e: React.WheelEvent<HTMLDivElement>)  => {
         //scroll up
-        if(pageState.isScrollEnabled){
+        if(pageScroll){
             if(e.deltaY < 0){
                 setPageState({
                     ...pageState,
                     activePage: pageState.activePage + 1 > pageState.pages.length-1 ? 0 : pageState.activePage + 1,
-                    isScrollEnabled: false,
                 })
             }
             //scroll down
@@ -62,9 +61,9 @@ const PageSelector:React.FC<any> = () =>{
                 setPageState({
                     ...pageState,
                     activePage: pageState.activePage - 1 < 0 ? pageState.pages.length-1 : pageState.activePage - 1,
-                    isScrollEnabled: false,
                 }) 
             }
+            setPageScroll(false);
         }
     }
 
@@ -72,7 +71,7 @@ const PageSelector:React.FC<any> = () =>{
         
         <div 
             className={theme.bg__normal}
-            onWheel={(e: React.WheelEvent<HTMLDivElement>) => changePage(e)}
+            onWheel={changePage}
         >
             {
                 currentPage === currentPageType.home ? <Home /> :

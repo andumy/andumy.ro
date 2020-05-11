@@ -1,17 +1,83 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Navbar from '../../UI/organisms/Navbar/Navbar';
-import CategoryBox from './../../UI/atoms/CategoryBox/CategoryBox';
+import CategorySlider, {directionType} from './../../UI/molecules/CategorySlider/CategorySlider';
+import theme from './Category.module.scss';
+import { Category as CategoryType } from './../../../types/Category/Category';
+import { AppState } from '../../../reducers';
+
+
 
 const Category:React.FC = () => {
-    
+ 
+    const categories = useSelector<AppState,CategoryType[]>(state => state.categories)
+    const [scrolls,setScrolls] = useState({
+        leftScroll: directionType.none,
+        rightScroll: directionType.none,
+        leftToggleScroll: true,
+        rightToggleScroll: true
+    });
+
+    const mirrorScroll = (slider:string,direction:directionType) => {
+        switch(slider){
+            case 'left':
+                    if(direction == directionType.up){
+                        setScrolls({
+                            leftScroll: scrolls.leftScroll,
+                            rightScroll: directionType.down,
+                            leftToggleScroll: scrolls.leftToggleScroll,
+                            rightToggleScroll: !scrolls.rightToggleScroll,
+                        })
+                    }else{
+                        setScrolls({
+                            leftScroll: scrolls.leftScroll,
+                            rightScroll: directionType.up,
+                            leftToggleScroll: scrolls.leftToggleScroll,
+                            rightToggleScroll: !scrolls.rightToggleScroll,
+                        })
+                    }
+                break;
+            case 'right':
+                    if(direction == directionType.up){
+                        setScrolls({
+                            leftScroll: directionType.down,
+                            rightScroll: scrolls.rightScroll,
+                            leftToggleScroll: !scrolls.leftToggleScroll,
+                            rightToggleScroll: scrolls.rightToggleScroll,
+                        })
+                    }else{
+                        setScrolls({
+                            leftScroll: directionType.up,
+                            rightScroll: scrolls.rightScroll,
+                            leftToggleScroll: !scrolls.leftToggleScroll,
+                            rightToggleScroll: scrolls.rightToggleScroll,
+                        })
+                    }
+                break;
+        }
+
+    }
 
     return(
         <div>
             <Navbar/>
             <h1>CATEGORY</h1>
-            <CategoryBox
-                name={'ceva'}
-            />
+            <div className={theme.category__content}>
+                <CategorySlider
+                    position={'left'}
+                    offset={0}
+                    onWheel={mirrorScroll}
+                    triggerScroll={scrolls.leftToggleScroll}
+                    scrollDirection={scrolls.leftScroll}
+                />
+                <CategorySlider
+                    position={'right'}
+                    offset={290}
+                    onWheel={mirrorScroll}
+                    triggerScroll={scrolls.rightToggleScroll}
+                    scrollDirection={scrolls.rightScroll}
+                />
+            </div>
         </div>
     );
 
