@@ -32,12 +32,13 @@ const CategorySlider:React.FC<CategorySliderType> = ({
     const [sliderPosition,setSliderPosition] = useState(-2*boxsize);
     let storeCategories = useSelector<AppState,CategoryType[]>(state => state.categories);
     const [categories,setCategories] = useState([
-        storeCategories[storeCategories.length - 1],
         storeCategories[storeCategories.length - 2],
+        storeCategories[storeCategories.length - 1],
         ...storeCategories, 
         storeCategories[0],
         storeCategories[1],
     ]);
+    console.log(categories);
     const [pageScroll,setPageScroll] = useState<boolean>(true);
 
     const sliderUl = useRef<HTMLUListElement>(null);
@@ -63,14 +64,14 @@ const CategorySlider:React.FC<CategorySliderType> = ({
                 if(sliderPosition >= -boxsize){
                     if(null !== sliderUl.current){
                         sliderUl.current.style.transition = 'none';
-                        sliderUl.current.style.transform = `translate3d(0px, ${(categories.length-4)*(-boxsize)+offset}px, 0px)`;
+                        sliderUl.current.style.transform = `translate3d(0px, ${(categories.length-3)*(-boxsize)+offset}px, 0px)`;
 
                         setTimeout(() => {
                             if(null !== sliderUl.current){
                                 sliderUl.current.style.transition = 'all 0.5s ease-in-out';
-                                setSliderPosition((categories.length-5)*(-boxsize));
+                                setSliderPosition((categories.length-4)*(-boxsize));
                             }
-                        }, 0);
+                        }, 100);
                     }
                 }else{
                     setSliderPosition(sliderPosition+boxsize);
@@ -86,7 +87,7 @@ const CategorySlider:React.FC<CategorySliderType> = ({
                                 sliderUl.current.style.transition = 'all 0.5s ease-in-out';
                                 setSliderPosition(3*(-boxsize));
                             }
-                        }, 0);
+                        }, 100);
                     }
                 }else{
                     setSliderPosition(sliderPosition-boxsize);
