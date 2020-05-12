@@ -13,7 +13,8 @@
     justify-content: center;
     text-align: center;
     margin:30px;
-
+    cursor: pointer;
+    
     &__container{
         @extend .categoryBox;
     }

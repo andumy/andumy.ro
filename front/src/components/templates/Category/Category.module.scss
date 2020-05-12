@@ -6,6 +6,10 @@
         display: flex;
         top: 0;
         left: 0;
-        justify-content: center;
+        justify-content: space-between;
+        &__sliders{
+            display: flex;
+            justify-content: center;
+        }
     }
 }

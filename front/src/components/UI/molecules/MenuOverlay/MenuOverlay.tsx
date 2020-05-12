@@ -5,7 +5,6 @@ import theme from './MenuOverlay.module.scss';
 import { AppState } from '../../../../reducers';
 import { Category as CategoryType } from './../../../../types/Category/Category';
 import MenuLink from '../../atoms/MenuLink/MenuLink';
-import { Utils as UtilsType } from '../../../../types/Utils/Utils';
 import  classNames  from 'classnames';
 
 

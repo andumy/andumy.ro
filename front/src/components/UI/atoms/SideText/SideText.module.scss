@@ -1,0 +1,27 @@
+@import '../../../../assets/scss/variables';
+
+.sideText{
+    &__container{
+        display: flex;
+        font-size: 50px;
+        color:$color-black;
+        font-family: 'Montserrat Black';
+        height: 100vh;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 50px;
+        margin-right: 50px;
+        div{
+            p{
+                cursor: pointer;
+                margin:0px
+            }
+            &:hover{
+                p{
+                    color:$color-yellow;
+                }
+            }
+        }
+
+    }
+}

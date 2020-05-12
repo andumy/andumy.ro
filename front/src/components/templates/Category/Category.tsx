@@ -5,7 +5,7 @@ import CategorySlider, {directionType} from './../../UI/molecules/CategorySlider
 import theme from './Category.module.scss';
 import { Category as CategoryType } from './../../../types/Category/Category';
 import { AppState } from '../../../reducers';
-
+import SideText from './../../UI/atoms/SideText/SideText';
 
 
 const Category:React.FC = () => {
@@ -61,21 +61,30 @@ const Category:React.FC = () => {
     return(
         <div>
             <Navbar/>
-            <h1>CATEGORY</h1>
             <div className={theme.category__content}>
-                <CategorySlider
+                <SideText
+                    word={'st/ud/io'}
                     position={'left'}
-                    offset={0}
-                    onWheel={mirrorScroll}
-                    triggerScroll={scrolls.leftToggleScroll}
-                    scrollDirection={scrolls.leftScroll}
                 />
-                <CategorySlider
+                <div className={theme.category__content__sliders}>
+                    <CategorySlider
+                        position={'left'}
+                        offset={180}
+                        onWheel={mirrorScroll}
+                        triggerScroll={scrolls.leftToggleScroll}
+                        scrollDirection={scrolls.leftScroll}
+                    />
+                    <CategorySlider
+                        position={'right'}
+                        offset={290+180}
+                        onWheel={mirrorScroll}
+                        triggerScroll={scrolls.rightToggleScroll}
+                        scrollDirection={scrolls.rightScroll}
+                    />
+                </div>
+                <SideText
+                    word={'se/rv/ic/es'}
                     position={'right'}
-                    offset={290}
-                    onWheel={mirrorScroll}
-                    triggerScroll={scrolls.rightToggleScroll}
-                    scrollDirection={scrolls.rightScroll}
                 />
             </div>
         </div>
