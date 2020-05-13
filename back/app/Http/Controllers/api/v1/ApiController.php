@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api\v1;
 
 use App\Category;
 use App\Element;
+use App\Studio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -70,5 +71,17 @@ class ApiController extends Controller
                 
     }
 
+    public function getStudio(){
+        if(Studio::count() > 0){
+            $studio = Studio::first();
+        }
+        else{
+            $studio = new Studio([
+                'title' => '',
+                'description' => ''
+            ]);
+        }
 
+        return response()->json($studio);
+    }
 }

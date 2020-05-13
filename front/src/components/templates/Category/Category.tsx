@@ -6,7 +6,7 @@ import theme from './Category.module.scss';
 import { Category as CategoryType } from './../../../types/Category/Category';
 import { AppState } from '../../../reducers';
 import SideText from './../../UI/atoms/SideText/SideText';
-
+import { currentPageType } from '../../../types/Utils/Utils';
 
 const Category:React.FC = () => {
  
@@ -63,7 +63,8 @@ const Category:React.FC = () => {
             <Navbar/>
             <div className={theme.category__content}>
                 <SideText
-                    word={'st/ud/io'}
+                    word={'ho/me'}
+                    goTo={currentPageType.home}
                     position={'left'}
                 />
                 <div className={theme.category__content__sliders}>
@@ -83,7 +84,8 @@ const Category:React.FC = () => {
                     />
                 </div>
                 <SideText
-                    word={'se/rv/ic/es'}
+                    word={'st/ud/io'}
+                    goTo={currentPageType.studio}
                     position={'right'}
                 />
             </div>

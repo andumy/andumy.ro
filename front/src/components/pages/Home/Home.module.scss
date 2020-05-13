@@ -1,0 +1,18 @@
+@import '../../../assets/scss/variables';
+
+.home{
+    &__content{
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        top: 0;
+        left: 0;
+        justify-content: space-between;
+        &__logo{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

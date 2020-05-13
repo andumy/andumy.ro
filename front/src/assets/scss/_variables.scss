@@ -4,13 +4,13 @@
     src: url(../fonts/Montserrat-Black.ttf) format('truetype');
 }
 @font-face {
-    font-family: 'Montserrat SemiBlack';
+    font-family: 'Montserrat SemiBold';
     src: url(../fonts/Montserrat-SemiBold.ttf) format('truetype');
 }
 
 //font variables
 $font-thick: 'Montserrat Black';
-$font-normal: 'Montserrat SemiBlack';
+$font-normal: 'Montserrat SemiBold';
 
 // color variables
 $color-yellow: #fcd804;

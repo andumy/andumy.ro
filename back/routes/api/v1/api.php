@@ -18,4 +18,5 @@ Route::post('/login','api\v1\ApiController@login');
 Route::group(['middleware' => ['auth:api']], function () {
     Route::get('/getCategories','api\v1\ApiController@getCategories');
     Route::get('/getElements/{category_id}','api\v1\ApiController@getElements');
+    Route::get('/getStudio','api\v1\ApiController@getStudio');
 });

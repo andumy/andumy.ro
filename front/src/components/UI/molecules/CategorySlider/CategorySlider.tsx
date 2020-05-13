@@ -38,7 +38,6 @@ const CategorySlider:React.FC<CategorySliderType> = ({
         storeCategories[0],
         storeCategories[1],
     ]);
-    console.log(categories);
     const [pageScroll,setPageScroll] = useState<boolean>(true);
 
     const sliderUl = useRef<HTMLUListElement>(null);

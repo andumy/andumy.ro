@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('/client','ClientController')->except(['show']);
 	Route::get('/home', 'HomeController@index')->name('home');
 	Route::resource('user', 'UserController', ['except' => ['show']]);
+	Route::resource('studio', 'StudioController', ['except' => ['create','update','show','edit','destroy']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);

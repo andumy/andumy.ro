@@ -4,6 +4,7 @@ import { Auth } from '../../../types/Auth/Auth';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../../../reducers';
 import { getCategory } from '../../../actions/category.action';
+import { setStudio } from './../../../actions/utils.action';
 
 
 
@@ -20,6 +21,7 @@ const Bootstrap:React.FC<any> = (props:any) =>{
         } else {
             setIsLoading(false);
             dispatch(getCategory());
+            dispatch(setStudio());
         }
 
     }, [auth.token])

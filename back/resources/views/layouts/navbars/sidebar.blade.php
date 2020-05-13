@@ -77,6 +77,12 @@
           <span class="sidebar-normal">{{ __('Clients') }} </span>
         </a>
       </li>
+      <li class="nav-item{{ $activePage == 'studio' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('studio.index') }}">
+          <i class="material-icons">home</i>
+          <span class="sidebar-normal">{{ __('Studio') }} </span>
+        </a>
+      </li>
       {{-- <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('notifications') }}">
           <i class="material-icons">notifications</i>

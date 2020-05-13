@@ -12,3 +12,6 @@ export const Auth = {
     login: (authToken:object) => REST.post('login',false,authToken),
 }
 
+export const Utils = {
+    get: () => REST.get(`getStudio`,true),
+}

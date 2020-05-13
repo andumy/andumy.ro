@@ -1,16 +1,21 @@
 import {  
     UtilsActionTypes 
     } from '../types/Utils/actions';
-import { Utils, currentPageType } from './../types/Utils/Utils';
+import { Utils, currentPageType, studioType } from './../types/Utils/Utils';
 import { 
     SET_UTILS,
     SET_ACTIVE_CATEGORY,
     SET_CURRENT_PAGE,
+    SET_STUDIO
 } from './../constants/utils.constants';
 
 const elementReducerDefaultState:Utils = {
     currentPage: currentPageType.home,
     activeCategory: 0,
+    studio: {
+        title:'',
+        description: ''
+    }
 };
 
 const utilsReducer = (state = elementReducerDefaultState, action:UtilsActionTypes): Utils => {
@@ -22,6 +27,9 @@ const utilsReducer = (state = elementReducerDefaultState, action:UtilsActionType
             return action.utils;
             break;
         case SET_CURRENT_PAGE:
+            return action.utils;
+            break;
+        case SET_STUDIO:
             return action.utils;
             break;
         default:
