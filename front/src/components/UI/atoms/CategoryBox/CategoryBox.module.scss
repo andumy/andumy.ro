@@ -7,7 +7,7 @@
     min-height: 250px;
     background-color: $color-black;
     color: $color-dark;
-    font-size: calc(150px + 7.8vw);
+    font-size: calc(100px + 11vw);
     font-family: $font-thick;
     display: flex;
     flex-direction: column;
@@ -19,11 +19,14 @@
     
     &__container{
         @extend .categoryBox;
+        p{
+            width: min-content;
+        }
     }
 
     &:hover{
         background-color: $color-yellow;
         text-align: left;
-        font-size: 35px;
+        font-size: calc(10px + 2vw);
     }
 }
