@@ -1,4 +1,6 @@
-.category{
+@import '../../../assets/scss/variables';
+
+.elements{
     &__container{
         position: absolute;
         width: 100%;
@@ -7,9 +9,7 @@
         top: 0;
         left: 0;
         justify-content: space-between;
-        &__sliders{
-            display: flex;
-            justify-content: center;
-        }
+        background-color: $color-yellow;
+        color: $color-dark;
     }
 }

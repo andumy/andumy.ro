@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import theme from './CategoryBox.module.scss';
 
 interface CategoryBoxType {
@@ -10,11 +10,17 @@ const CategoryBox:React.FC<CategoryBoxType> = ({
 }) => {
 
     const [isFullWord,setIsFullWord] = useState(false);
+    const boxRef = useRef<HTMLDivElement>(null);
+    const handleClick = (e:React.WheelEvent<HTMLDivElement>) => {
+        console.log(boxRef.current?.offsetWidth,boxRef.current?.offsetHeight)
+    }
     return(
         <div 
             className={theme.categoryBox__container} 
             onMouseEnter={() => setIsFullWord(true)}
             onMouseLeave={() => setIsFullWord(false)}
+            onClick={handleClick}
+            ref={boxRef}
         >
             <p>
                 {

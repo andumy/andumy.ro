@@ -7,8 +7,7 @@ import theme from './CategorySlider.module.scss';
 
 export interface CategorySliderType {
     position: string,
-    offset: number,
-    boxsize?: number,
+    offset: boolean,
     onWheel: (slider:string,direction:directionType) => void,
     triggerScroll: boolean,
     scrollDirection: directionType
@@ -23,13 +22,12 @@ export enum directionType {
 const CategorySlider:React.FC<CategorySliderType> = ({
     position,
     offset,
-    boxsize = 580,
     onWheel,
     triggerScroll,
     scrollDirection
 }) => {
     
-    const [sliderPosition,setSliderPosition] = useState(-2*boxsize);
+    
     let storeCategories = useSelector<AppState,CategoryType[]>(state => state.categories);
     const [categories,setCategories] = useState([
         storeCategories[storeCategories.length - 2],
@@ -38,58 +36,70 @@ const CategorySlider:React.FC<CategorySliderType> = ({
         storeCategories[0],
         storeCategories[1],
     ]);
+    const [sliderPosition,setSliderPosition] = useState(2);
     const [pageScroll,setPageScroll] = useState<boolean>(true);
+    const [boxsize,setBoxSize] = useState<number>(0.27*window.innerWidth < 250 ? 250+60 : 0.27*window.innerWidth + 60);
 
     const sliderUl = useRef<HTMLUListElement>(null);
 
     let sliderTransform = {
-        transform: `translate3d(0px, ${sliderPosition+offset}px, 0px)`
+        transform: `translate3d(0px, -${offset ? (sliderPosition*boxsize-boxsize/2) : (sliderPosition*boxsize)}px, 0px)`
     }
 
     useEffect(() => {
+        window.addEventListener('resize', handleResize)
+    },[])
+
+    useEffect(() => {
+
         sliderTransform = {
-            transform: `translate3d(0px, ${sliderPosition+offset}px, 0px)`
+            transform: `translate3d(0px, -${offset ? (sliderPosition*boxsize-boxsize/2) : (sliderPosition*boxsize)}px, 0px)`
         };
-    }, [sliderPosition])
+
+    }, [sliderPosition,boxsize])
 
     useEffect(() => {
         scrollTo(scrollDirection);
     },[triggerScroll])
 
+    const handleResize = () => {
+        setBoxSize(0.27*window.innerWidth < 250 ? 250+60 : 0.27*window.innerWidth + 60);
+    }
     //add or substract position inside slider
     const scrollTo = (direction:directionType) => {
         switch(direction){
-            case directionType.up :
-                if(sliderPosition >= -boxsize){
+            case directionType.down :
+                if(sliderPosition >= categories.length - 2){
+                    
                     if(null !== sliderUl.current){
                         sliderUl.current.style.transition = 'none';
-                        sliderUl.current.style.transform = `translate3d(0px, ${(categories.length-3)*(-boxsize)+offset}px, 0px)`;
+                        sliderUl.current.style.transform = `translate3d(0px, -${offset ? (2*boxsize-boxsize/2) : (2*boxsize)}px, 0px)`;
 
                         setTimeout(() => {
                             if(null !== sliderUl.current){
                                 sliderUl.current.style.transition = 'all 0.5s ease-in-out';
-                                setSliderPosition((categories.length-4)*(-boxsize));
+                                setSliderPosition(3);
                             }
                         }, 100);
                     }
                 }else{
-                    setSliderPosition(sliderPosition+boxsize);
+                    setSliderPosition(sliderPosition+1);
                 }
             break;
-            case directionType.down :
-                if(sliderPosition <= (categories.length-2)*(-boxsize)){
+            case directionType.up :
+                if(sliderPosition <= 1){
                     if(null !== sliderUl.current){
                         sliderUl.current.style.transition = 'none';
-                        sliderUl.current.style.transform = `translate3d(0px, ${2*(-boxsize)+offset}px, 0px)`;
+                        sliderUl.current.style.transform = `translate3d(0px, -${offset ? ((categories.length-3)*boxsize-boxsize/2) : ((categories.length-3)*boxsize)}px, 0px)`;
                         setTimeout(() => {
                             if(null !== sliderUl.current){
                                 sliderUl.current.style.transition = 'all 0.5s ease-in-out';
-                                setSliderPosition(3*(-boxsize));
+                                setSliderPosition(categories.length-4);
                             }
                         }, 100);
                     }
                 }else{
-                    setSliderPosition(sliderPosition-boxsize);
+                    setSliderPosition(sliderPosition-1);
                 }
             break;
         }

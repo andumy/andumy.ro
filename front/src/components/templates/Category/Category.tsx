@@ -61,23 +61,23 @@ const Category:React.FC = () => {
     return(
         <div>
             <Navbar/>
-            <div className={theme.category__content}>
+            <div className={theme.category__container}>
                 <SideText
                     word={'ho/me'}
                     goTo={currentPageType.home}
                     position={'left'}
                 />
-                <div className={theme.category__content__sliders}>
+                <div className={theme.category__container__sliders}>
                     <CategorySlider
                         position={'left'}
-                        offset={180}
+                        offset={true}
                         onWheel={mirrorScroll}
                         triggerScroll={scrolls.leftToggleScroll}
                         scrollDirection={scrolls.leftScroll}
                     />
                     <CategorySlider
                         position={'right'}
-                        offset={290+180}
+                        offset={false}
                         onWheel={mirrorScroll}
                         triggerScroll={scrolls.rightToggleScroll}
                         scrollDirection={scrolls.rightScroll}

@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './../../UI/organisms/Navbar/Navbar';
+import Footer from './../../UI/organisms/Footer/Footer';
 import { studioType, currentPageType } from '../../../types/Utils/Utils';
 import { AppState } from '../../../reducers';
 import { useSelector } from 'react-redux';
@@ -11,13 +12,13 @@ const Studio:React.FC = () => {
     return( 
         <div >
             <Navbar/>
-            <div className={theme.studio__content}>
+            <div className={theme.studio__container}>
                 <SideText
                     word={'se/rv/ic/es'}
                     goTo={currentPageType.category}
                     position={'left'}
                 />
-                <div className={theme.studio__content__texts}>
+                <div className={theme.studio__container__texts}>
                     <h1>{studio.title.toUpperCase()}</h1>
                     <span>{studio.description}</span>
                 </div>
@@ -27,6 +28,7 @@ const Studio:React.FC = () => {
                     position={'right'}
                 />
             </div>
+            <Footer/>
         </div>
     );
 }

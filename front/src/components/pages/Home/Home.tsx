@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './../../UI/organisms/Navbar/Navbar';
+import Footer from './../../UI/organisms/Footer/Footer';
 
 import theme from './Home.module.scss';
 import SideText from './../../UI/atoms/SideText/SideText';
@@ -12,13 +13,13 @@ const Home:React.FC = () => {
     
         <div>
             <Navbar/>
-            <div className={theme.home__content}>
+            <div className={theme.home__container}>
                 <SideText
                     word={'st/ud/io'}
                     goTo={currentPageType.studio}
                     position={'left'}
                 />
-                <div className={theme.home__content__logo}>
+                <div className={theme.home__container__logo}>
                     Logo
                 </div>
                 <SideText
@@ -27,7 +28,7 @@ const Home:React.FC = () => {
                     position={'right'}
                 />
             </div>
-            
+            <Footer/>
         </div>
     );
 }

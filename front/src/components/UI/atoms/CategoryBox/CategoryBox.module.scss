@@ -1,11 +1,13 @@
 @import '../../../../assets/scss/variables';
 
 .categoryBox{
-    width:520px;
-    height:520px;
+    width:27vw;
+    height:27vw;
+    min-width: 250px;
+    min-height: 250px;
     background-color: $color-black;
     color: $color-dark;
-    font-size: 300px;
+    font-size: calc(150px + 7.8vw);
     font-family: $font-thick;
     display: flex;
     flex-direction: column;
