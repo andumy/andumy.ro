@@ -14,35 +14,50 @@ const Footer:React.FC = () => {
         <div className={theme.footer__container}>
             {
                 currentPage === currentPageType.studio ? 
-                    <div>
-                        <p>
+                    <div className={theme.footer__studio__container}>
+                        <p className={theme.footer__studio__copyright}> 
                             <Fa
                                 icon={'copyright'}
                                 type={'far'}
                             />
                             {date.getFullYear()} Andrei Dumitrescu all rights reserved.
                         </p>
-                        <div>
-                            <Fa 
-                                icon={'dribbble'}
-                                type={'fab'}
-                            />
-                            <Fa
-                                icon={'gitlab'}
-                                type={'fab'}
-                            />
-                            <Fa
-                                icon={'github'}
-                                type={'fab'}
-                            />
-                            <Fa
-                                icon={'facebook-f'}
-                                type={'fab'}
-                            />
-                            <Fa
-                                icon={'linkedin-in'}
-                                type={'fab'}
-                            />
+                        <div className={theme.footer__studio__container__icons}>
+                            <a target="_blank" href={process.env.REACT_APP_DRIBBLE_URL}>
+                                <Fa 
+                                    icon={'dribbble'}
+                                    type={'fab'}
+                                    className={theme.footer__studio__icons}
+                                />
+                            </a>
+                            <a target="_blank" href={process.env.REACT_APP_GITLAB_URL}>
+                                <Fa 
+                                    icon={'gitlab'}
+                                    type={'fab'}
+                                    className={theme.footer__studio__icons}
+                                />
+                            </a>
+                            <a target="_blank" href={process.env.REACT_APP_GITHUB_URL}>
+                                <Fa 
+                                    icon={'github'}
+                                    type={'fab'}
+                                    className={theme.footer__studio__icons}
+                                />
+                            </a>
+                            <a target="_blank" href={process.env.REACT_APP_FACEBOOK_URL}>
+                                <Fa 
+                                    icon={'facebook-f'}
+                                    type={'fab'}
+                                    className={theme.footer__studio__icons}
+                                />
+                            </a>
+                            <a target="_blank" href={process.env.REACT_APP_LINKEDIN_URL}>
+                                <Fa 
+                                    icon={'linkedin-in'}
+                                    type={'fab'}
+                                    className={theme.footer__studio__icons}
+                                />
+                            </a>
                         </div>
                     </div>
                 : currentPage === currentPageType.home ? 

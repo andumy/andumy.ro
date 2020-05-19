@@ -7,10 +7,15 @@
     font-family: 'Montserrat SemiBold';
     src: url(../fonts/Montserrat-SemiBold.ttf) format('truetype');
 }
+@font-face {
+    font-family: 'Montserrat Regular';
+    src: url(../fonts/Montserrat-Regular.ttf) format('truetype');
+}
 
 //font variables
-$font-thick: 'Montserrat Black';
-$font-normal: 'Montserrat SemiBold';
+$font-black: 'Montserrat Black';
+$font-semibold: 'Montserrat SemiBold';
+$font-regular: 'Montserrat Regular';
 
 // color variables
 $color-yellow: #fcd804;

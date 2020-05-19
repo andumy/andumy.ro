@@ -7,19 +7,22 @@ import { setCurrentPage } from '../../../../actions/utils.action';
 interface SideTextType {
     word: string,
     position: "left" | "right",
-    goTo: currentPageType
+    goTo: currentPageType,
+    margin?: number
 }
 
 const SideText:React.FC<SideTextType> = ({
     word,
     position,
-    goTo
-}) =>{
+    goTo,
+    margin=100,
+}) => {
 
     const dispatch = useDispatch();
     const wordArray = word.split('/');
     const textAlign = {
-        textAlign: position
+        textAlign: position,
+        margin: `0px ${position === 'right' ? margin : '0' }px 0px ${position === 'left' ? margin : '0' }px`
     };
 
     const clickHandler = () => {

@@ -3,7 +3,7 @@
 .footer{
     &__container{
         position: absolute;
-        width:100vw;
+        width:100%;
         display: flex;
         bottom: 0;
         justify-content: space-around;
@@ -14,15 +14,44 @@
             align-items: center;
             justify-content: center;
             font-size: 25px;
-            font-family: $font-thick;
+            font-family: $font-black;
             color: $color-yellow;
             letter-spacing: 15px;
             p{
                 margin-left: 30px;
                 font-size: 25px;
-                font-family: $font-normal;
+                font-family: $font-regular;
                 color: $color-yellow;
                 letter-spacing: 15px;
+            }
+        }
+    }
+    &__studio{
+        &__container{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin: 0px 100px;
+            &__icons{
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+        }
+        &__copyright{
+            padding: 0px 100px;
+            font-size: 16px;
+            font-family: $font-regular;
+            color: $color-yellow;
+        }
+        &__icons{
+            font-size: 30px;
+            margin: 0px 10px;
+            color: $color-black;
+            &:hover{
+                color: $color-yellow;
+                cursor: pointer;
             }
         }
     }

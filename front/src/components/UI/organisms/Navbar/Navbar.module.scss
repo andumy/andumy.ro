@@ -1,7 +1,23 @@
+@import '../../../../assets/scss/variables';
+
 .navbar{
     height:50px;
     width:100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
+    &__logo{
+        position: relative;
+        margin: 10px;
+        background-color: transparent;
+        fill: none;
+        height: 60%;
+        width: auto;
+        stroke: $color-yellow;
+        stroke-width: 15px;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        z-index: 10;
+        cursor: pointer;
+    }
 }

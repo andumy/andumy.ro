@@ -5,12 +5,12 @@
         display: flex;
         font-size: 50px;
         color:$color-black;
-        font-family: $font-thick;
+        font-family: $font-black;
         height: 100vh;
         justify-content: center;
         flex-direction: column;
-        margin-left: 50px;
-        margin-right: 50px;
+        // margin-left: 50px;
+        // margin-right: 50px;
         div{
             p{
                 cursor: pointer;

@@ -18,7 +18,7 @@ const Studio:React.FC = () => {
                     goTo={currentPageType.category}
                     position={'left'}
                 />
-                <div className={theme.studio__container__texts}>
+                <div className={theme.studio__texts}>
                     <h1>{studio.title.toUpperCase()}</h1>
                     <span>{studio.description}</span>
                 </div>

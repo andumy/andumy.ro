@@ -19,17 +19,6 @@ const PageSelector:React.FC<any> = () =>{
     const utils = useSelector<AppState,UtilsType>(state => state.utils)
     const dispatch = useDispatch();
     const { currentPage, activeCategory } = {...utils};
-
-    interface PageStateType {
-        pages: currentPageType[],
-        activePage: number,
-    }
-
-    const [pageState,setPageState] = useState<PageStateType>({
-        pages:[currentPageType.studio, currentPageType.home, currentPageType.category],
-        activePage: 1,
-    });
-
     const [pageScroll,setPageScroll] = useState<boolean>(true);
 
     useEffect(() =>{
@@ -43,25 +32,42 @@ const PageSelector:React.FC<any> = () =>{
 
     },[currentPage])
 
-    useEffect(() =>{
-        dispatch(setCurrentPage(pageState.pages[pageState.activePage]))
-    },[pageState.activePage])
 
     const changePage = (e: React.WheelEvent<HTMLDivElement>)  => {
         //scroll up
         if(pageScroll){
             if(e.deltaY < 0){
-                setPageState({
-                    ...pageState,
-                    activePage: pageState.activePage + 1 > pageState.pages.length-1 ? 0 : pageState.activePage + 1,
-                })
+                switch (currentPage){
+                    case currentPageType.home:
+                        dispatch(setCurrentPage(currentPageType.category))
+                        break;
+                    case currentPageType.category:
+                        dispatch(setCurrentPage(currentPageType.studio))
+                        break;
+                    case currentPageType.studio:
+                        dispatch(setCurrentPage(currentPageType.home))
+                        break;
+                    default:
+                        dispatch(setCurrentPage(currentPageType.home))
+                        break;
+                }
             }
             //scroll down
             else{
-                setPageState({
-                    ...pageState,
-                    activePage: pageState.activePage - 1 < 0 ? pageState.pages.length-1 : pageState.activePage - 1,
-                }) 
+                switch (currentPage){
+                    case currentPageType.home:
+                        dispatch(setCurrentPage(currentPageType.studio))
+                        break;
+                    case currentPageType.category:
+                        dispatch(setCurrentPage(currentPageType.home))
+                        break;
+                    case currentPageType.studio:
+                        dispatch(setCurrentPage(currentPageType.category))
+                        break;
+                    default:
+                        dispatch(setCurrentPage(currentPageType.home))
+                        break;
+                }
             }
             setPageScroll(false);
         }

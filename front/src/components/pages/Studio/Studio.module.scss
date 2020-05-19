@@ -3,29 +3,29 @@
 .studio{
     &__container{
         position: absolute;
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         display: flex;
         top: 0;
         left: 0;
-        justify-content: space-between;
-        &__texts{
-            width:60vw;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            h1{
-                margin-right: 30px;
-                font-family: $font-thick;
-                color: $color-yellow;
-                font-size: 125px;
-            }
-            span{
-                margin-left: 30px;
-                font-size: 20px;
-                font-family: $font-normal;
-                color: $color-yellow;
-            }
+        justify-content: space-between;   
+    }
+    &__texts{
+        width:60vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h1{
+            margin-right: 30px;
+            font-family: $font-black;
+            color: $color-yellow;
+            font-size: 100px;
+        }
+        span{
+            margin-left: 30px;
+            font-size: 18px;
+            font-family: $font-regular;
+            color: $color-yellow;
         }
     }
 }
