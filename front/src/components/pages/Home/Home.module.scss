@@ -41,6 +41,7 @@
                 z-index: 30;
                 transition: all .2s ease-in-out;
                 stroke: $color-yellow;
+                animation: dash 2s ease-in-out forwards;
             }
         }
     }
