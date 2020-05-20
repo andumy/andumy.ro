@@ -5,6 +5,9 @@ import Footer from './../../UI/organisms/Footer/Footer';
 import theme from './Home.module.scss';
 import SideText from './../../UI/atoms/SideText/SideText';
 import { currentPageType } from '../../../types/Utils/Utils';
+import {ReactComponent as LogoTopArrow} from '../../../assets/svg/logo_top_arrow.svg';
+import {ReactComponent as LogoBotArrow} from '../../../assets/svg/logo_bottom_arrow.svg';
+import {ReactComponent as LogoMidArrow} from '../../../assets/svg/logo_middle_arrow.svg';
 
 const Home:React.FC = () => {
 
@@ -20,7 +23,18 @@ const Home:React.FC = () => {
                     position={'left'}
                 />
                 <div className={theme.home__container__logo}>
-                    Logo
+                    <LogoTopArrow
+                        className={theme.home__logo}
+                        onPointerEnter={() => console.log('top')}
+                    />
+                    <LogoMidArrow
+                        className={theme.home__logo}
+                        onPointerEnter={() => console.log('mid')}
+                    />
+                    <LogoBotArrow
+                        className={theme.home__logo}
+                        onPointerEnter={() => console.log('bot')}
+                    />
                 </div>
                 <SideText
                     word={'se/rv/ic/es'}

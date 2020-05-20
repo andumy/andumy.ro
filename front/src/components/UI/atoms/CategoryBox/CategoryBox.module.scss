@@ -16,7 +16,7 @@
     text-align: center;
     margin:30px;
     cursor: pointer;
-    
+    // transition: font-size .3s ease-in-out;
     &__container{
         @extend .categoryBox;
         p{

@@ -21,3 +21,17 @@ $font-regular: 'Montserrat Regular';
 $color-yellow: #fcd804;
 $color-dark: #111111;
 $color-black: #000000;
+
+@mixin delayAnim($items, $selector, $delay) {
+    @for $i from 1 through $items {
+      $classes: ();
+      @for $j from 1 through $i {
+        $className: if($j == 1, #{$selector}, #{"~ " + $selector});
+        $classes: join($classes, unquote($className), space);
+      }
+     
+      #{$classes} {
+        animation-delay: 0.5s * $i;
+      }
+    }
+}

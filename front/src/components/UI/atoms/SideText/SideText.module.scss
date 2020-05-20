@@ -9,12 +9,12 @@
         height: 100vh;
         justify-content: center;
         flex-direction: column;
-        // margin-left: 50px;
-        // margin-right: 50px;
+        
         div{
             p{
                 cursor: pointer;
-                margin:0px
+                margin:0px;
+                transition: all .3s ease-in-out;
             }
             &:hover{
                 p{

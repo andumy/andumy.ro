@@ -15,4 +15,35 @@
             align-items: center;
         }
     }
+    &__logo{
+        position: absolute;
+        fill: none;
+        width: 20vw;
+        height: auto;
+        stroke: $color-black;
+        stroke-width: 12px;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        z-index: 3;
+        cursor: pointer;
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: dash 3s ease-in-out forwards;
+        transition: all .3s ease-in-out;
+        pointer-events: "none";
+        &:hover{
+            stroke: $color-yellow;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 3s ease-in-out forwards;
+        }
+    }
 }
+
+@include delayAnim(3, '.home__logo', 2s);
+
+@keyframes dash {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
