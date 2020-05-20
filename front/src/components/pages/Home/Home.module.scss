@@ -25,22 +25,27 @@
         stroke-linecap: butt;
         stroke-linejoin: miter;
         z-index: 3;
-        cursor: pointer;
-        stroke-dasharray: 1000;
-        stroke-dashoffset: 1000;
-        animation: dash 3s ease-in-out forwards;
-        transition: all .3s ease-in-out;
-        pointer-events: "none";
-        &:hover{
-            stroke: $color-yellow;
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-            animation: dash 3s ease-in-out forwards;
+
+        polyline{
+            stroke-dasharray: 500;
+            stroke-dashoffset: 500;
+            animation: dash 2s ease-in-out forwards;
+            transition: all .3s ease-in-out;
+            pointer-events: all;
+
+        }
+        &__splineHover{
+            &:hover{
+                
+                cursor: pointer;
+                z-index: 30;
+                transition: all .2s ease-in-out;
+                stroke: $color-yellow;
+            }
         }
     }
 }
 
-@include delayAnim(3, '.home__logo', 2s);
 
 @keyframes dash {
     to {
