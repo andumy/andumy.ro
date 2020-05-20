@@ -2,18 +2,21 @@
 import React from 'react';
 import { currentPageType}  from '../../../../types/Utils/Utils';
 import theme from './Footer.module.scss';
-import { AppState } from '../../../../reducers';
-import { useSelector } from 'react-redux';
 import Fa from './../../atoms/Fa/Fa';
 
-const Footer:React.FC = () => {
+interface FooterType {
+    page: 'studio' | 'home'
+}
 
-    const currentPage = useSelector<AppState,currentPageType>(state => state.utils.currentPage);
+const Footer:React.FC<FooterType> = ({
+    page
+}) => {
+
     const date = new Date();
     return (
         <div className={theme.footer__container}>
             {
-                currentPage === currentPageType.studio ? 
+                page === 'studio' ? 
                     <div className={theme.footer__studio__container}>
                         <p className={theme.footer__studio__copyright}> 
                             <Fa
@@ -60,7 +63,7 @@ const Footer:React.FC = () => {
                             </a>
                         </div>
                     </div>
-                : currentPage === currentPageType.home ? 
+                : page === 'home' ? 
                     <span>ANDUMY<p>STUDIO</p></span>
                     :  <i></i>
 

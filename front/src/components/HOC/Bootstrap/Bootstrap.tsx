@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { getAuthToken } from '../../../actions/auth.action';
-import { Auth } from '../../../types/Auth/Auth';
+import { Auth as AuthType} from '../../../types/Auth/Auth';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../../../reducers';
 import { getCategory } from '../../../actions/category.action';
 import { setStudio } from './../../../actions/utils.action';
+import { Category as CategoryType } from './../../../types/Category/Category';
 
 
 
 const Bootstrap:React.FC<any> = (props:any) =>{
 
     const [isLoading,setIsLoading] = useState(true);
-    const auth = useSelector<AppState, Auth>(state => state.auth)
+    const auth = useSelector<AppState, AuthType>(state => state.auth)
+    const categories = useSelector<AppState, CategoryType[]>(state => state.categories)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -19,12 +21,18 @@ const Bootstrap:React.FC<any> = (props:any) =>{
         if(auth.token === ''){
             dispatch(getAuthToken());
         } else {
-            setIsLoading(false);
             dispatch(getCategory());
             dispatch(setStudio());
         }
 
     }, [auth.token])
+
+    useEffect(() => {
+        if(categories.length > 1){
+            console.log(categories)
+            setIsLoading(false);
+        }
+    },[categories])
 
     if(isLoading){
         return null;

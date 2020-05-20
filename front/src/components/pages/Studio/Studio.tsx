@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from './../../UI/organisms/Navbar/Navbar';
 import Footer from './../../UI/organisms/Footer/Footer';
 import { studioType, currentPageType } from '../../../types/Utils/Utils';
 import { AppState } from '../../../reducers';
@@ -11,7 +10,6 @@ const Studio:React.FC = () => {
     const studio = useSelector<AppState,studioType>(state => state.utils.studio)
     return( 
         <div >
-            <Navbar/>
             <div className={theme.studio__container}>
                 <SideText
                     word={'se/rv/ic/es'}
@@ -28,7 +26,9 @@ const Studio:React.FC = () => {
                     position={'right'}
                 />
             </div>
-            <Footer/>
+            <Footer
+                page={'studio'}
+            />
         </div>
     );
 }

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef} from 'react';
-import Navbar from './../../UI/organisms/Navbar/Navbar';
 import Footer from './../../UI/organisms/Footer/Footer';
 
 import theme from './Home.module.scss';
@@ -26,7 +25,10 @@ const Home:React.FC = () => {
                  * order to animate them in order, we must look at them from a binary
                  * point of view 
                  */
-                (spline as HTMLElement).style.animationDelay = `${(index % 2 + 1 - index / 2)*0.7}s` ;
+                (spline as HTMLElement).style.animationDelay = `${(index % 2 + 1 - index / 2)*0.8}s` ;
+
+                // (spline as HTMLElement).style.animationDelay = `${index > 0 ? 1 : 0}s` ;
+
                 (spline as HTMLElement).onanimationend = () => {
                     
                     //skip the middle part
@@ -54,7 +56,6 @@ const Home:React.FC = () => {
     return( 
     
         <div>
-            <Navbar/>
             <div className={theme.home__container}>
                 <SideText
                     word={'st/ud/io'}
@@ -74,7 +75,9 @@ const Home:React.FC = () => {
                     position={'right'}
                 />
             </div>
-            <Footer/>
+            <Footer
+                page={'home'}
+            />
         </div>
     );
 }

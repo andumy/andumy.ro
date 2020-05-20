@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import Navbar from '../../UI/organisms/Navbar/Navbar';
 import CategorySlider, {directionType} from './../../UI/molecules/CategorySlider/CategorySlider';
 import theme from './Category.module.scss';
 import { Category as CategoryType } from './../../../types/Category/Category';
@@ -60,7 +59,6 @@ const Category:React.FC = () => {
 
     return(
         <div>
-            <Navbar/>
             <div className={theme.category__container}>
                 <SideText
                     word={'ho/me'}

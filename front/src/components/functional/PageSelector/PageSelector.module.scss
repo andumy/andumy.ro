@@ -17,3 +17,39 @@
     }
 
 }
+
+.pageSelector{
+    &__container{
+        position: absolute;
+        overflow-x: hidden;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width:100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        
+        z-index: 4;
+    }
+
+    &__list{
+        transition: all 1s ease-in-out;
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        
+    }
+
+    &__frame{
+        min-width: 100vw;
+        height: 100vh;
+        margin: 0;
+        position: relative;
+        text-align: center;
+        flex-direction: row;
+        flex-flow: row;
+    }
+}

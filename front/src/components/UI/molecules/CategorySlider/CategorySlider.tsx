@@ -36,6 +36,7 @@ const CategorySlider:React.FC<CategorySliderType> = ({
         storeCategories[0],
         storeCategories[1],
     ]);
+    
     const [sliderPosition,setSliderPosition] = useState(2);
     const [pageScroll,setPageScroll] = useState<boolean>(true);
     const [boxsize,setBoxSize] = useState<number>(0.27*window.innerWidth < 250 ? 250+60 : 0.27*window.innerWidth + 60);
