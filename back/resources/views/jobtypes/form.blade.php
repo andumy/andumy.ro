@@ -4,13 +4,13 @@
 
   @switch($action)
       @case('create')
-          {!! Form::model($jobtype = new App\Jobtype, ['method' => 'POST', 'action' => 'JobtypeController@store']) !!}
+          {!! Form::model($jobtype = new App\Models\Jobtype, ['method' => 'POST', 'action' => 'JobtypeController@store']) !!}
           @break
       @case('edit')
           {!! Form::model($jobtype, ['method' => 'PATCH', 'action' => ['JobtypeController@update',$jobtype]]) !!}
           @break
       @default
-          {!! Form::model($jobtype = new App\Jobtype, ['method' => 'POST', 'action' => 'JobtypeController@store']) !!}
+          {!! Form::model($jobtype = new App\Models\Jobtype, ['method' => 'POST', 'action' => 'JobtypeController@store']) !!}
   @endswitch
   <div class="container-fluid">
     <div class="card">

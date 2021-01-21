@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Studio;
+use App\Models\Studio;
 use Illuminate\Http\Request;
 
 class StudioController extends Controller

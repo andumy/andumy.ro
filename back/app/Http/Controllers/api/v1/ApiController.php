@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\api\v1;
 
-use App\Category;
-use App\Element;
-use App\Studio;
+use App\Models\Category;
+use App\Models\Element;
+use App\Models\Studio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;

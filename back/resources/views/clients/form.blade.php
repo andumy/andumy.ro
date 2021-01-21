@@ -4,13 +4,13 @@
 
   @switch($action)
       @case('create')
-          {!! Form::model($client = new App\Client, ['method' => 'POST', 'action' => 'ClientController@store']) !!}
+          {!! Form::model($client = new App\Models\Client, ['method' => 'POST', 'action' => 'ClientController@store']) !!}
           @break
       @case('edit')
           {!! Form::model($client, ['method' => 'PATCH', 'action' => ['ClientController@update',$client]]) !!}
           @break
       @default
-          {!! Form::model($client = new App\Client, ['method' => 'POST', 'action' => 'ClientController@store']) !!}
+          {!! Form::model($client = new App\Models\Client, ['method' => 'POST', 'action' => 'ClientController@store']) !!}
   @endswitch
   <div class="container-fluid">
     <div class="card">

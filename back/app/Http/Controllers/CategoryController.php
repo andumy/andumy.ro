@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Element;
+use App\Models\Category;
+use App\Models\Element;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use Carbon\Carbon;
@@ -95,7 +95,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function destroy(Category $category)

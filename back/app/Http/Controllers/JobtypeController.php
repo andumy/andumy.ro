@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobtype;
+use App\Models\Jobtype;
 use Illuminate\Http\Request;
 use App\Http\Requests\JobtypeRequest;
 
@@ -54,7 +54,7 @@ class JobtypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Jobtype  $jobtype
+     * @param  \App\Models\Jobtype  $jobtype
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -70,7 +70,7 @@ class JobtypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Jobtype  $jobtype
+     * @param  \App\Models\Jobtype  $jobtype
      * @return \Illuminate\Http\Response
      */
     public function update(JobtypeRequest $request, $id)
@@ -85,7 +85,7 @@ class JobtypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Jobtype  $jobtype
+     * @param  \App\Models\Jobtype  $jobtype
      * @return \Illuminate\Http\Response
      */
     public function destroy(Jobtype $jobtype)

@@ -4,13 +4,13 @@
 
   @switch($action)
       @case('create')
-          {!! Form::model($element = new App\Element, ['method' => 'POST', 'action' => 'ElementController@store', 'files' => 'true']) !!}
+          {!! Form::model($element = new App\Models\Element, ['method' => 'POST', 'action' => 'ElementController@store', 'files' => 'true']) !!}
           @break
       @case('edit')
           {!! Form::model($element, ['method' => 'PATCH', 'action' => ['ElementController@update',$element], 'files' => 'true']) !!}
           @break
       @default
-          {!! Form::model($element = new App\Element, ['method' => 'POST', 'action' => 'ElementController@store', 'files' => 'true']) !!}
+          {!! Form::model($element = new App\Models\Element, ['method' => 'POST', 'action' => 'ElementController@store', 'files' => 'true']) !!}
   @endswitch
   <div class="container-fluid">
     <div class="card">

@@ -10,7 +10,7 @@
       <h4 class="card-title ">{{ __('Studio')}}</h4>
       <p class="card-category">{{ __('Studio page details')}}</p>
     </div>
-    {!! Form::model($std = new App\Studio, ['method' => 'POST', 'action' => 'StudioController@store']) !!}
+    {!! Form::model($std = new App\Models\Studio, ['method' => 'POST', 'action' => 'StudioController@store']) !!}
     <div class="card-body">
         <div class="container-fluid">
             <div class="row">

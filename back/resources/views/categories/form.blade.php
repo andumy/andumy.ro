@@ -4,13 +4,13 @@
 
   @switch($action)
       @case('create')
-          {!! Form::model($caregory = new App\Category, ['method' => 'POST', 'action' => 'CategoryController@store', 'files' => 'true']) !!}
+          {!! Form::model($caregory = new App\Models\Category, ['method' => 'POST', 'action' => 'CategoryController@store', 'files' => 'true']) !!}
           @break
       @case('edit')
           {!! Form::model($category, ['method' => 'PATCH', 'action' => ['CategoryController@update',$category], 'files' => 'true']) !!}
           @break
       @default
-          {!! Form::model($caregory = new App\Category, ['method' => 'POST', 'action' => 'CategoryController@store', 'files' => 'true']) !!}
+          {!! Form::model($caregory = new App\Models\Category, ['method' => 'POST', 'action' => 'CategoryController@store', 'files' => 'true']) !!}
   @endswitch
 
     <div class="container-fluid">

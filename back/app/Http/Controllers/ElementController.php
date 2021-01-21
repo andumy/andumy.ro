@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Element;
-use App\Jobtype;
-use App\Client;
+use App\Models\Category;
+use App\Models\Element;
+use App\Models\Jobtype;
+use App\Models\Client;
 
 use App\Http\Requests\ElementRequest;
 use Carbon\Carbon;
@@ -119,7 +119,7 @@ class ElementController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Element  $element
+     * @param  \App\Models\Element  $element
      * @return \Illuminate\Http\Response
      */
     public function destroy(Element $element)

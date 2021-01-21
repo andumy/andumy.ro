@@ -4,7 +4,7 @@ namespace App\Http\ViewComposers;
 
 use App\Repositories\UserRepository;
 use Illuminate\View\View;
-use App\Studio;
+use App\Models\Studio;
 
 class StudioComposer
 {

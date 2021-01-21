@@ -2,7 +2,7 @@
 import React from 'react';
 import { currentPageType}  from '../../../../types/Utils/Utils';
 import theme from './Footer.module.scss';
-import Fa from './../../atoms/Fa/Fa';
+import Fa from '../../atoms/Fa/Fa';
 
 interface FooterType {
     page: 'studio' | 'home'
