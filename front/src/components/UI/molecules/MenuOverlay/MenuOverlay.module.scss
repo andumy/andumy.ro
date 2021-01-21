@@ -4,15 +4,14 @@
     &__overlay{
 
         height: 100vh;
-        width: 100%;
         flex-direction: column;
         justify-content: start;
         align-self: start;
-        position: absolute;
+        position: sticky;
         display: flex;
-        z-index:57;
         top: 0;
         right: 0;
+        overflow-y: auto;
 
         &__generic{
             @extend .menu__overlay;
@@ -26,14 +25,55 @@
             width: 100vw;
         }
         &__hidden{
-            transition: all .5s ease-in-out;
+            transition: all 1.2s ease-in-out;
             width: 0px;
         }
-
-        &__container{
-            @extend .menu__overlay;
-            margin-top: 50px;
-            height: auto;
-        }
     }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 14px;
+    height: 18px;
+}
+
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
+/* Track */
+::-webkit-scrollbar-track {
+background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: transparent;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+
+    height: 6px;
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    -webkit-border-radius: 20px;
+    background-color: $color-dark;
+    -webkit-box-shadow: inset -1px -1px 0px transparent, inset 1px 1px 0px transparent;
+
+}
+
+::-webkit-scrollbar-thumb {
+    height: 6px;
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    -webkit-border-radius: 20px;
+    background-color: $color-light;
+    -webkit-box-shadow: inset -1px -1px 0px transparent, inset 1px 1px 0px transparent;
+
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
 }

@@ -33,7 +33,7 @@ const MenuOverlay:React.FC<MenuOverlayType> = ({
 
 
     const style = classNames({
-        [theme.menu__overlay__generic]: true,
+        [theme.menu__overlay__generic] : true,
         [theme.menu__overlay__display] : startDisplay,
         [theme.menu__overlay__hidden] : !startDisplay,
 
@@ -44,26 +44,20 @@ const MenuOverlay:React.FC<MenuOverlayType> = ({
         e.stopPropagation();
     }
     return(
-        <div>
-            <div className={style} ></div>
-            <div className={theme.menu__overlay__container}
-                onWheel={scrollHandler}
-            >
-
-                {
-                    isDisplayed ?
-                        categories.map((category, i) =>
-                            <MenuLink
-                                name={category.name}
-                                key={category.name}
-                                wait={i*100}
-                                pageId={category.id}
-                            />
-                        )
-                    :
-                        ''
-                }
-            </div>
+        <div className={style} onWheel={scrollHandler}>
+            {
+                isDisplayed ?
+                    categories.map((category, i) =>
+                        <MenuLink
+                            name={category.name}
+                            key={category.name}
+                            wait={i*100}
+                            pageId={category.id}
+                        />
+                    )
+                :
+                    ''
+            }
         </div>
     )
 }

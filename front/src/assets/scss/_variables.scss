@@ -19,9 +19,9 @@ $font-regular: 'Montserrat Regular';
 
 // color variables
 $color-yellow: #fcd804;
-$color-dark: #111111;
+$color-dark: #222222;
 $color-black: #000000;
-
+$color-light: rgba(34, 34, 34, 0.5);
 @mixin delayAnim($items, $selector, $delay) {
     @for $i from 1 through $items {
       $classes: ();

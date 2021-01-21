@@ -20,6 +20,7 @@ const PageSelector:React.FC<any> = () =>{
 
     const dispatch = useDispatch();
     const utils = useSelector<AppState,UtilsType>(state => state.utils)
+    
     const { currentPage, activeCategory } = {...utils};
 
     const [pageScroll,setPageScroll] = useState<boolean>(true);
@@ -94,10 +95,10 @@ const PageSelector:React.FC<any> = () =>{
 
                         setTimeout(() => {
                             if(null !== sliderUl.current){
-                                sliderUl.current.style.transition = 'all 0.5s ease-in-out';
+                                sliderUl.current.style.transition = 'all 0.7s ease-in-out';
                                 setSliderPosition(0);
                             }
-                        }, 100);
+                        }, 500);
                     }
                 }else{
                     setSliderPosition(sliderPosition+1);
@@ -110,10 +111,10 @@ const PageSelector:React.FC<any> = () =>{
                         sliderUl.current.style.transform = `translate3d(100vw, 0px, 0px)`;
                         setTimeout(() => {
                             if(null !== sliderUl.current){
-                                sliderUl.current.style.transition = 'all 0.5s ease-in-out';
+                                sliderUl.current.style.transition = 'all 0.7s ease-in-out';
                                 setSliderPosition(0);
                             }
-                        }, 100);
+                        }, 500);
                     }
                 }else{
                     setSliderPosition(sliderPosition-1);
