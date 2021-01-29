@@ -2,11 +2,12 @@ import React, { useEffect, useRef} from 'react';
 import Footer from './../../UI/organisms/Footer/Footer';
 
 import theme from './Home.module.scss';
-import SideText from './../../UI/atoms/SideText/SideText';
+import SideText from '../../UI/atoms/SideText/SideText';
 import { currentPageType } from '../../../types/Utils/Utils';
 import {ReactComponent as Logo} from '../../../assets/svg/logo_full.svg';
 import { useDispatch } from 'react-redux';
 import { setCurrentPage } from '../../../actions/utils.action';
+import { textPosition } from '../Category/Category';
 
 const Home:React.FC = () => {
 
@@ -60,7 +61,7 @@ const Home:React.FC = () => {
                 <SideText
                     word={'st/ud/io'}
                     goTo={currentPageType.studio}
-                    position={'left'}
+                    position={textPosition.left}
                 />
                 <div className={theme.home__container__logo}>
                     <Logo
@@ -72,7 +73,7 @@ const Home:React.FC = () => {
                 <SideText
                     word={'se/rv/ic/es'}
                     goTo={currentPageType.category}
-                    position={'right'}
+                    position={textPosition.right}
                 />
             </div>
             <Footer

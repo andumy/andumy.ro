@@ -1,14 +1,20 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import theme from './SideText.module.scss';
 import { currentPageType } from '../../../../types/Utils/Utils';
 import { setCurrentPage } from '../../../../actions/utils.action';
+import { textPosition } from '../../../pages/Category/Category';
 
 interface SideTextType {
     word: string,
-    position: "left" | "right",
+    position: textPosition,
     goTo: currentPageType,
     margin?: number
+}
+
+enum textAlignDirection {
+    "left" = "left",
+    "right" = "right",
 }
 
 const SideText:React.FC<SideTextType> = ({
@@ -21,8 +27,8 @@ const SideText:React.FC<SideTextType> = ({
     const dispatch = useDispatch();
     const wordArray = word.split('/');
     const textAlign = {
-        textAlign: position,
-        margin: `0px ${position === 'right' ? margin : '0' }px 0px ${position === 'left' ? margin : '0' }px`
+        textAlign: position === textPosition.left ? textAlignDirection.left : textAlignDirection.right ,
+        margin: `0px ${position === textPosition.right ? margin : '0' }px 0px ${position === textPosition.left ? margin : '0' }px`
     };
 
     const clickHandler = () => {

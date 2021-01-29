@@ -1,25 +1,33 @@
 import React, {useState, useRef} from 'react';
 import theme from './CategoryBox.module.scss';
+import { useDispatch } from 'react-redux';
+import { setCurrentPage } from '../../../../actions/utils.action';
+import { currentPageType } from '../../../../types/Utils/Utils';
+import { sliderPosition } from '../../../pages/Category/Category';
+
 
 interface CategoryBoxType {
-    name:string
+    name:string,
+    clickHandler: (boxRef:React.RefObject<HTMLDivElement>,slider:sliderPosition) => void,
+    position:sliderPosition
 }
 
 const CategoryBox:React.FC<CategoryBoxType> = ({
-    name
+    name,
+    clickHandler,
+    position
 }) => {
 
+    const dispatch = useDispatch();
     const [isFullWord,setIsFullWord] = useState(false);
     const boxRef = useRef<HTMLDivElement>(null);
-    const handleClick = (e:React.WheelEvent<HTMLDivElement>) => {
-        console.log(boxRef.current?.offsetWidth,boxRef.current?.offsetHeight)
-    }
+
     return(
         <div 
             className={theme.categoryBox__container} 
             onMouseEnter={() => setIsFullWord(true)}
             onMouseLeave={() => setIsFullWord(false)}
-            onClick={handleClick}
+            onClick={() => clickHandler(boxRef,position)}
             ref={boxRef}
         >
             <p>

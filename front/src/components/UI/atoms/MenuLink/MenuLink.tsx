@@ -10,6 +10,7 @@ interface MenuLinkProps {
     pageId: number
 }
 
+
 const MenuLink:React.FC<MenuLinkProps> = ({
      name,
      wait=0,

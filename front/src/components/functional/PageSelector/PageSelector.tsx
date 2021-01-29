@@ -6,8 +6,8 @@ import { Utils as UtilsType } from '../../../types/Utils/Utils';
 import { getElements } from '../../../actions/element.actions';
 import { setCurrentPage } from '../../../actions/utils.action';
 
-import Elements from '../../templates/Elements/Elements';
-import Category from '../../templates/Category/Category';
+import Elements from '../../pages/Elements/Elements';
+import Category from '../../pages/Category/Category';
 import Home from './../../pages/Home/Home';
 import Studio from './../../pages/Studio/Studio';
 
@@ -42,7 +42,6 @@ const PageSelector:React.FC<any> = () =>{
     }, [sliderPosition])
 
     useEffect(() =>{
-        
         if(currentPage === currentPageType.element){
             dispatch(getElements(activeCategory));
         }
@@ -56,6 +55,8 @@ const PageSelector:React.FC<any> = () =>{
                     scrollTo(directionType.down);
                 } else if(currentPage === currentPageType.category){
                     scrollTo(directionType.up);
+                } else if(currentPage === currentPageType.element){
+                    inElements();
                 }
                 break;
 
@@ -64,6 +65,8 @@ const PageSelector:React.FC<any> = () =>{
                     scrollTo(directionType.down);
                 } else if(currentPage === currentPageType.studio){
                     scrollTo(directionType.up);
+                } else if(currentPage === currentPageType.element){
+                    inElements();
                 }
                 break;
 
@@ -72,7 +75,13 @@ const PageSelector:React.FC<any> = () =>{
                     scrollTo(directionType.down);
                 } else if(currentPage === currentPageType.home){
                     scrollTo(directionType.up);
+                } else if(currentPage === currentPageType.element){
+                    inElements();
                 }
+                break;
+
+            case currentPageType.element:
+                outElements()
                 break;
 
             default:
@@ -170,12 +179,30 @@ const PageSelector:React.FC<any> = () =>{
 
     }
 
+    const outElements = () => {
+
+    }
+
+    const inElements = () => {
+
+    }
+    console.log(currentPage,currentPageType.element);
+    if(currentPage == currentPageType.element){
+        return (
+            <div 
+                className={theme.bg__normal}
+            >
+                <Navbar />   
+                <Elements />
+            </div>
+        )
+    }
+
     return (
-        
         <div 
             className={theme.bg__normal}
         >
-            <Navbar/>   
+            <Navbar />   
             <div className={theme.pageSelector__container}>
                 <ul 
                     className={theme.pageSelector__list}

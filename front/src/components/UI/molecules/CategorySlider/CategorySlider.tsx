@@ -2,15 +2,17 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Category as CategoryType } from './../../../../types/Category/Category';
 import { AppState } from '../../../../reducers';
-import CategoryBox from './../../atoms/CategoryBox/CategoryBox';
+import CategoryBox from '../../atoms/CategoryBox/CategoryBox';
 import theme from './CategorySlider.module.scss';
+import { sliderPosition } from '../../../pages/Category/Category';
 
 export interface CategorySliderType {
-    position: string,
+    position: sliderPosition,
     offset: boolean,
-    onWheel: (slider:string,direction:directionType) => void,
+    onWheel: (slider:sliderPosition,direction:directionType) => void,
     triggerScroll: boolean,
-    scrollDirection: directionType
+    scrollDirection: directionType,
+    clickHandler: (boxRef:React.RefObject<HTMLDivElement>,slider:sliderPosition) => void
 }
 
 export enum directionType {
@@ -19,13 +21,14 @@ export enum directionType {
     "none"
 }
 
-const CategorySlider:React.FC<CategorySliderType> = ({
+const CategorySlider = React.forwardRef<HTMLDivElement,CategorySliderType>(({
     position,
     offset,
     onWheel,
     triggerScroll,
-    scrollDirection
-}) => {
+    scrollDirection,
+    clickHandler
+},ref) => {
     
     
     let storeCategories = useSelector<AppState,CategoryType[]>(state => state.categories);
@@ -139,8 +142,10 @@ const CategorySlider:React.FC<CategorySliderType> = ({
                     categories.map((category,i) => 
                         <li className={theme.categorySlider__frame}>
                             <CategoryBox
-                                key={position+category.name}
+                                key={`${i}${position}${category.name}`}
                                 name={category.name}
+                                position={position}
+                                clickHandler={clickHandler}
                             />
                         </li>
                     )
@@ -148,6 +153,6 @@ const CategorySlider:React.FC<CategorySliderType> = ({
             </ul>
         </div>
     );
-}
+})
 
 export default CategorySlider;

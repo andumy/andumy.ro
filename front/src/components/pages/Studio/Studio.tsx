@@ -4,7 +4,8 @@ import { studioType, currentPageType } from '../../../types/Utils/Utils';
 import { AppState } from '../../../reducers';
 import { useSelector } from 'react-redux';
 import theme from './Studio.module.scss';
-import SideText from './../../UI/atoms/SideText/SideText';
+import SideText from '../../UI/atoms/SideText/SideText';
+import { textPosition } from '../Category/Category';
 const Studio:React.FC = () => {
 
     const studio = useSelector<AppState,studioType>(state => state.utils.studio)
@@ -14,7 +15,7 @@ const Studio:React.FC = () => {
                 <SideText
                     word={'se/rv/ic/es'}
                     goTo={currentPageType.category}
-                    position={'left'}
+                    position={textPosition.left}
                 />
                 <div className={theme.studio__texts}>
                     <h1>{studio.title.toUpperCase()}</h1>
@@ -23,7 +24,7 @@ const Studio:React.FC = () => {
                 <SideText
                     word={'ho/me'}
                     goTo={currentPageType.home}
-                    position={'right'}
+                    position={textPosition.right}
                 />
             </div>
             <Footer

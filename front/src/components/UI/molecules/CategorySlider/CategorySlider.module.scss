@@ -2,10 +2,17 @@
     &__container{
         position: relative;
         height: 100%;
-        overflow: hidden;
         display: flex;
         justify-content: center;
-        
+        &::after, &::before{
+            content: ".";
+            display: block;
+            height: 0;
+            overflow: hidden;
+        }
+        &::after{
+            clear: both;
+        }
     }
 
     &__list{

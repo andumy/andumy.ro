@@ -16,6 +16,7 @@
     text-align: center;
     margin:30px;
     cursor: pointer;
+    transform-origin: center;
     // transition: font-size .3s ease-in-out;
     &__container{
         @extend .categoryBox;
