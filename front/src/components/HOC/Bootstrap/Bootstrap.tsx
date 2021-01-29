@@ -29,7 +29,6 @@ const Bootstrap:React.FC<any> = (props:any) =>{
 
     useEffect(() => {
         if(categories.length > 1){
-            console.log(categories)
             setIsLoading(false);
         }
     },[categories])

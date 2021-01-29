@@ -18,7 +18,6 @@ const Navbar:React.FC<any> = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log(showLogo);
         setShowLogo({
             visibility: currentPage === currentPageType.home ? "hidden" : 'visible'
         });

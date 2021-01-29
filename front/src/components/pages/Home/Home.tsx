@@ -12,7 +12,6 @@ import { textPosition } from '../Category/Category';
 const Home:React.FC = () => {
 
     const swapPage = (e:React.MouseEvent<SVGSVGElement>) => {
-        console.log(e);
     }
     const logoRef = useRef<SVGSVGElement>(null);
     const dispatch = useDispatch();

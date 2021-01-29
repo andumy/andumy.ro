@@ -130,7 +130,7 @@ const CategorySlider = React.forwardRef<HTMLDivElement,CategorySliderType>(({
     }
 
     return( 
-        <div className={theme.categorySlider__container}>
+        <div className={theme.categorySlider__container} ref={ref}>
             <ul 
                 style={sliderTransform}
                 className={theme.categorySlider__list}

@@ -43,7 +43,9 @@ const Category:React.FC = () => {
                     }
                     break;
                 case sliderPosition.right_down:
-
+                    if(sliderRight.current){
+                        sliderRight.current.classList.add(theme.category__upperSlider)
+                    }
                     break;
             }
             boxRef.current.classList.add(theme.category__elements_stage1);

@@ -186,7 +186,6 @@ const PageSelector:React.FC<any> = () =>{
     const inElements = () => {
 
     }
-    console.log(currentPage,currentPageType.element);
     if(currentPage == currentPageType.element){
         return (
             <div 
